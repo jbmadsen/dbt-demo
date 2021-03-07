@@ -35,5 +35,5 @@ models:
   dbt_demo:
     +database: Import
     # Applies to all files under models/example/
-    example:
-      materialized: table
+    import:
+      materialized: view
