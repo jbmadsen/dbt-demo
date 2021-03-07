@@ -1,6 +1,4 @@
 ## To run: docker-compose run -d
-##
-
 
 version: "3"
 
@@ -13,22 +11,3 @@ services:
       - ~/git/dbt-demo/containers/sqlserver/volumes:/var/opt/mssql/data
     ports:
       - "1433:1433"
-
-  # # ----------------------------------------
-  # # MSSQL Server Database
-  # # https://hub.docker.com/_/microsoft-mssql-server
-  # # Inspiration:
-  # # https://blog.logrocket.com/how-to-run-sql-server-in-a-docker-container/
-  # # ----------------------------------------
-  # sql-server-db:
-  #     container_name: sql-server-db
-  #     image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu 
-  #     volumes:
-  #       - ~/git/dbt-demo/containers/sqlserver/volumes:/var/opt/mssql/data
-  #     ports:
-  #       - "1433:1433"
-  #     environment:
-  #       SA_PASSWORD: "Secure1337Password"
-  #       ACCEPT_EULA: "Y"
-  #       MSSQL_AGENT_ENABLED: "true"
-  #       #MSSQL_PID: "Express"
