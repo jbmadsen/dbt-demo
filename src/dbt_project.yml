@@ -32,8 +32,14 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
+  # Be sure to namespace your model configs to your project name
   dbt_demo:
-    +database: Import
-    # Applies to all files under models/example/
+    # This configures models found in models/import/
     import:
+      +enabled: true
+      +database: Import
       materialized: view
+      # This configures models found in models/import/base (example only)
+      # These models will be ephemeral, as the config above is overridden
+      #base:
+      #  +materialized: ephemeral
