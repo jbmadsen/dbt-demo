@@ -1,0 +1,14 @@
+# docker-compose up -d keeps it running
+# I can access bash using: docker exec -i -t ubuntu bash
+
+version: "3"
+
+services:
+
+  ubuntu:
+    container_name: ubuntu
+    build: .
+    volumes:
+      - ~/git:/home/git/
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
