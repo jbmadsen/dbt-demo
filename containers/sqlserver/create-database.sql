@@ -1,0 +1,14 @@
+CREATE DATABASE Import;
+GO
+USE Import;
+GO
+
+CREATE DATABASE Source;
+GO
+USE Source;
+GO
+
+CREATE DATABASE Common;
+GO
+USE Common;
+GO
