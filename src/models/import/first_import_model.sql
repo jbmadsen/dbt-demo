@@ -7,7 +7,7 @@
     Try changing "table" to "view" below
 */
 
-{{ config(database='Import', materialized='table') }}
+{{ config(materialized='table') }}
 
 with source_data as (
 

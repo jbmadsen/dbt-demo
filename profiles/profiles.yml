@@ -10,6 +10,6 @@ sqlserver_demo:
       user: sa
       pass: Secure1337Password
       port: 1433
-      database: master
+      database: Import
       schema: dbo
       threads: 4
