@@ -3,8 +3,9 @@ Welcome to your new dbt project!
 ### Using the starter project
 
 Try running the following commands:
-- dbt run
-- dbt test
+- dbt debug --profiles-dir /home/git/dbt-demo/profiles
+- dbt run --profiles-dir /home/git/dbt-demo/profiles
+- dbt test --profiles-dir /home/git/dbt-demo/profiles
 
 
 ### Resources:

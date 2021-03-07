@@ -1,0 +1,15 @@
+# example profiles.yml file
+
+sqlserver_demo:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server'
+      host: 127.0.0.1
+      user: sa
+      pass: Secure1337Password
+      port: 1433
+      database: master
+      schema: dbo
+      threads: 4
