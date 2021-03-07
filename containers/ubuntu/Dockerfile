@@ -15,7 +15,9 @@ RUN apt-get update \
   && apt-file update \
   && apt-get install nano -y \
   && apt-get install curl -y \
-  && apt-get install -y python3-pip python3-dev \
+  && apt-get install git -y \
+
+RUN apt-get install -y python3-pip python3-dev \
   && cd /usr/local/bin \
   && ln -s /usr/bin/python3 python \
   && pip3 --no-cache-dir install --upgrade pip
