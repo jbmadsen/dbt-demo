@@ -1,6 +1,14 @@
-# Nothing here yet.
+# dbt Demo project in Docker containers
 
-This commit is nothing more than the default
+TODO
 
-> dbt init
+# Additional tools
+
+I am using the following tools with this project:
+
+* Docker
+* Docker Compose
+* Git
+* Visual Studio Code
+* Terminal
 

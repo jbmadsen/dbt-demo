@@ -16,13 +16,11 @@ RUN apt-get update \
   && apt-get install nano -y \
   && apt-get install curl -y \
   && apt-get install git -y \
-
-RUN apt-get install -y python3-pip python3-dev \
+  && apt-get install -y python3-pip python3-dev \
   && cd /usr/local/bin \
   && ln -s /usr/bin/python3 python \
-  && pip3 --no-cache-dir install --upgrade pip
-
-RUN rm -rf /var/lib/apt/lists/* \
+  && pip3 --no-cache-dir install --upgrade pip \
+  && rm -rf /var/lib/apt/lists/* \
   && apt update \
   && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
   && curl https://packages.microsoft.com/config/ubuntu/20.10/prod.list > /etc/apt/sources.list.d/mssql-release.list \
@@ -31,10 +29,8 @@ RUN rm -rf /var/lib/apt/lists/* \
   && ACCEPT_EULA=Y apt-get install mssql-tools -y \
   && echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile \
   && echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc \
-#  && source ~/.bashrc \
-  && apt-get install unixodbc-dev -y
-
-RUN pip install dbt \
+  && apt-get install unixodbc-dev -y \
+  && pip install dbt \
   && pip install dbt-sqlserver
 
 WORKDIR /home/git
