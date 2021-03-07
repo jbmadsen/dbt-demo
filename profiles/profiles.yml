@@ -6,7 +6,7 @@ sqlserver_demo:
     dev:
       type: sqlserver
       driver: 'ODBC Driver 17 for SQL Server'
-      host: 127.0.0.1
+      host: 172.23.0.2
       user: sa
       pass: Secure1337Password
       port: 1433
