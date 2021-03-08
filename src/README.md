@@ -3,10 +3,18 @@ Welcome to your new dbt project!
 ### Using the starter project
 
 Try running the following commands:
+
+Running:
 - dbt debug --profiles-dir /home/git/dbt-demo/profiles
 - dbt compile --profiles-dir /home/git/dbt-demo/profiles
 - dbt run --profiles-dir /home/git/dbt-demo/profiles
+
+Testing:
 - dbt test --profiles-dir /home/git/dbt-demo/profiles
+
+Documentation:
+- dbt docs generate --profiles-dir /home/git/dbt-demo/profiles
+
 
 
 ### Resources:
