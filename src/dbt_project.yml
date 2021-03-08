@@ -25,6 +25,17 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
 
 
+# Configuring seeds
+seeds:
+  +enabled: true
+  +quote_columns: true
+  # This configures data/postal_codes_dk.csv
+  postal_codes_dk:
+    # Override column types
+    +column_types:
+      location_name: nvarchar(200)
+
+
 # Configuring variables
 vars:
   'dbt_date:time_zone': 'Europe/Copenhagen'

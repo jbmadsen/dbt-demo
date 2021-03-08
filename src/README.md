@@ -4,6 +4,15 @@ Welcome to your new dbt project!
 
 Try running the following commands:
 
+Clean project:
+- dbt clean
+
+Install packages:
+- dbt deps --profiles-dir /home/git/dbt-demo/profiles
+
+Seed data:
+- dbt seed --full-refresh --profiles-dir /home/git/dbt-demo/profiles
+
 Running:
 - dbt debug --profiles-dir /home/git/dbt-demo/profiles
 - dbt compile --profiles-dir /home/git/dbt-demo/profiles
