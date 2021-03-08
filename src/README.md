@@ -4,6 +4,7 @@ Welcome to your new dbt project!
 
 Try running the following commands:
 - dbt debug --profiles-dir /home/git/dbt-demo/profiles
+- dbt compile --profiles-dir /home/git/dbt-demo/profiles
 - dbt run --profiles-dir /home/git/dbt-demo/profiles
 - dbt test --profiles-dir /home/git/dbt-demo/profiles
 
