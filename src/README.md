@@ -14,7 +14,7 @@ Testing:
 
 Documentation:
 - dbt docs generate --profiles-dir /home/git/dbt-demo/profiles
-
+- dbt docs serve --profiles-dir /home/git/dbt-demo/profiles
 
 
 ### Resources:
