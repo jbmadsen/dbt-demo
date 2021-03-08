@@ -16,6 +16,10 @@ sources:
       - name: DemoTable
         description: >
           Five records. Includes a single instance of NULL for testing.
+        tests:
+        - dbt_expectations.expect_table_row_count_to_be_between:
+            min_value: 1
+            max_value: 40
         columns:
           - name: Value
             description: First value (int) of the table. Has no practical value
@@ -32,4 +36,5 @@ sources:
             description: Load-time value (DateTime) of the row into the database table.
             tests:
               - not_null
+              - dbt_expectations.expect_column_to_exist
 
