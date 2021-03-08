@@ -1,0 +1,35 @@
+# Using sources: https://docs.getdbt.com/docs/building-a-dbt-project/using-sources
+
+version: 2
+
+sources:
+  - name: source
+    description: This is a seeded demo database used by our dbt flow, for proof of concept
+    database: Source
+    schema: dbo
+    freshness: # default freshness
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
+    loaded_at_field: Loaded_At
+
+    tables:
+      - name: DemoTable
+        description: >
+          Five records. Includes a single instance of NULL for testing.
+        columns:
+          - name: Value
+            description: First value (int) of the table. Has no practical value
+            tests:
+              - unique
+              - not_null
+          - name: OtherValue
+            description: Second value (int) of the table. >
+              Has no practical value. This one has a NULL value and will fail testing.
+            tests:
+              - unique
+              - not_null
+          - name: Loaded_At
+            description: Load-time value (DateTime) of the row into the database table.
+            tests:
+              - not_null
+
