@@ -12,9 +12,11 @@
 
 ## Add containers to network
 
->docker network connect --ip 172.23.0.2 dbt-network sql-server-db
+> docker network connect --ip 172.23.0.2 dbt-network sql-server-db
 
->docker network connect --ip 172.23.0.3 dbt-network ubuntu
+> docker network connect --ip 172.23.0.3 dbt-network ubuntu
+
+> docker network connect --ip 172.23.0.4 dbt-network jenkins
 
 
 ### Inspect network if needed

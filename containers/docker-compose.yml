@@ -27,6 +27,15 @@ services:
       file: ./ubuntu/docker-compose.yml
       service: ubuntu
 
+  jenkins:
+    container_name: jenkins-ext
+    networks:
+      dbt-network:
+        ipv4_address: 172.23.0.4
+    extends:
+      file: ./jenkins/docker-compose.yml
+      service: jenkins
+
 
 networks:
   dbt-network:
