@@ -1,4 +1,7 @@
 # All-in-one docker-compose file for all sub-files
+# Docs: 
+#   Extending docker-compose: https://docs.docker.com/compose/extends/
+#   Networking: https://runnable.com/docker/docker-compose-networking
 # docker-compose up -d keeps it running
 # I can access bash using: docker exec -i -t ubuntu-ext bash
 
