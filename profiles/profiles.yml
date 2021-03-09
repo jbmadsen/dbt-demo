@@ -1,5 +1,8 @@
 # example profiles.yml file
 
+config:
+  send_anonymous_usage_stats: true
+
 sqlserver_demo:
   target: dev
   outputs:
