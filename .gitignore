@@ -1,7 +1,12 @@
 # containers
+# sql server
 containers/sqlserver/volumes/*
+# jenkins
+containers/jenkins/data/*
+
 # profiles
 profiles/.user.yml
+
 # dbt
 src/target/
 src/dbt_modules/
