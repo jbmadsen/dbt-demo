@@ -1,0 +1,35 @@
+# All-in-one docker-compose file for all sub-files
+# docker-compose up -d keeps it running
+# I can access bash using: docker exec -i -t ubuntu-ext bash
+
+version: "3"
+
+
+services:
+  sql-server-db:
+    container_name: sql-server-db-ext
+    networks:
+      dbt-network:
+        ipv4_address: 172.23.0.2
+    extends:
+      file: ./sqlserver/docker-compose.yml
+      service: sql-server-db
+
+  ubuntu:
+    container_name: ubuntu-ext
+    networks:
+      dbt-network:
+        ipv4_address: 172.23.0.3
+    extends:
+      file: ./ubuntu/docker-compose.yml
+      service: ubuntu
+
+
+networks:
+  dbt-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.23.0.0/16
+          gateway: 172.23.0.1
