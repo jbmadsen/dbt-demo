@@ -2,9 +2,12 @@
 
 version: 2
 
-sources:
+sources: # This keyword specifies that we are talking about sources!
   - name: source
-    description: This is a seeded demo database used by our dbt flow, for proof of concept
+    description: > 
+      These are manually created demo tables used by our dbt flow, for proof of concept.
+      The purpose of sources in dbt indicates existing (as in - not created by dbt) tables usable by dbt.
+      These are usually loaded into the warehouse using an EL tool, like Stich or Fivetran.
     database: Source
     schema: dbo
     freshness: # default freshness
@@ -15,7 +18,7 @@ sources:
     tables:
       - name: DemoTable
         description: >
-          Five records. Includes a single instance of NULL for testing.
+          Five records. Includes a single instance of NULL for testing. Is manually created and updated in this demo.
         tests:
         - dbt_expectations.expect_table_row_count_to_be_between:
             min_value: 1
@@ -38,3 +41,19 @@ sources:
               - not_null
               - dbt_expectations.expect_column_to_exist
 
+      - name: Users
+        description: >
+          User records. For testing incremental snapshot modelling. Is manually created and updated in this demo.
+        columns:
+          - name: UserID
+            description: ID value (int) of the table.
+            tests:
+              - unique
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+          # - name: UserName # We do NOT need to specify ALL column names, only those we want to comment, test or otherwise describe
+          - name: Loaded_At
+            description: Load-time value (DateTime) of the row into the database table.
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_to_exist
