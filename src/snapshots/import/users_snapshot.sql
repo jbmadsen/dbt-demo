@@ -10,6 +10,8 @@
         )
     }}
 
+    -- Snapshot materialization defaults to Table, as otherwise it wouldn't make sense
+
     select * 
     from {{ source('source', 'Users') }}
 
