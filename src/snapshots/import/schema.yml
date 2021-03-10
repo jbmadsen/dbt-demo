@@ -2,15 +2,15 @@
 version: 2
 
 snapshots:
-    - name: users_snapshot
-      description: "Transform user data from Source db to Import db, as snapshot data"
-      columns:
-          - name: UserID
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
-          - name: Loaded_At
-            description: "Timestamp for when this as loaded into the DW"
-            tests:
-                - not_null
+  - name: users_snapshot
+    description: "Transform user data from Source db to Import db, as snapshot data"
+    columns:
+        - name: UserID
+          description: "The primary key for this table"
+          tests:
+              - unique
+              - not_null
+        - name: Loaded_At
+          description: "Timestamp for when this as loaded into the DW"
+          tests:
+              - not_null
