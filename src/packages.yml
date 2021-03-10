@@ -1,5 +1,12 @@
 packages:
+  # <see https://github.com/calogica/dbt-expectations/releases/latest> for the latest version tags
   - package: calogica/dbt_expectations
     version: [">=0.2.5", "<0.3.0"]
-    # <see https://github.com/calogica/dbt-expectations/releases/latest> for the latest version tags
+    
+  # No link
+  - package: fishtown-analytics/dbt_utils
+    version: [">=0.6.4", "<0.7.0"] #0.6.4.1 <- This does not work currently: https://github.com/fishtown-analytics/dbt/issues/3109
 
+  # https://github.com/dbt-msft/tsql-utils
+  - package: dbt-msft/tsql_utils
+    version: [">=0.6.4", "<0.7.0"] #0.6.4.1
