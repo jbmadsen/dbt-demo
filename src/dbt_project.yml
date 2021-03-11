@@ -28,11 +28,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 seeds:
   +enabled: true
   +quote_columns: true
-  # This configures data/postal_codes_dk.csv
-  postal_codes_dk:
+  # This configures data/dim_date_data.csv
+  dim_date_data:
     # Override column types
     +column_types:
-      location_name: nvarchar(200)
+      date: DATETIME
 
 
 # Configuring variables
