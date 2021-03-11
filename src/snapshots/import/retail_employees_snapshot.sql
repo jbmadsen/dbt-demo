@@ -1,4 +1,4 @@
-{% snapshot users_snapshot %}
+{% snapshot retail_employees_snapshot %}
 
     {{
         config(
@@ -13,6 +13,6 @@
     -- Snapshot materialization defaults to Table, as otherwise it wouldn't make sense
 
     select * 
-    from {{ source('source', 'Users') }}
+    from {{ source('source', 'retail_crm_employees') }}
 
 {% endsnapshot %}

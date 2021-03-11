@@ -5,12 +5,12 @@ models:
   - name: demo_import_to_common
     description: "Transform data from Import db to Common db, and adds indexes to the model"
     columns:
-        - name: Value
+        - name: orders_id
           description: "The primary key for this table"
           tests:
               - unique
               - not_null
-        - name: Loaded_At
+        - name: loaded_at
           description: "Timestamp for when this as loaded into the DW"
           tests:
               - not_null

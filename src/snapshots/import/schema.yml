@@ -2,10 +2,10 @@
 version: 2
 
 snapshots:
-  - name: users_snapshot
-    description: "Transform user data from Source db to Import db, as snapshot data"
+  - name: retail_employees_snapshot
+    description: "Transform employees data from Source db to Import db, as snapshot data"
     columns:
-        - name: UserID
+        - name: employees_id
           description: "The primary key for this table"
           tests:
               - unique

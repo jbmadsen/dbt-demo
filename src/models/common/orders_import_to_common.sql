@@ -3,8 +3,8 @@
     config({
       "pre-hook": "{{ drop_all_indexes_on_table() }}",
       "post-hook": [
-         "{{ create_nonclustered_index(columns = ['Value', 'OtherValue']) }}",
-         "{{ create_nonclustered_index(columns = ['Value'], includes = ['Loaded_At']) }}"
+         "{{ create_nonclustered_index(columns = ['orders_id', 'store_id']) }}",
+         "{{ create_nonclustered_index(columns = ['orders_id'], includes = ['Loaded_At']) }}"
 	      ]
     }) 
 }}
@@ -14,4 +14,4 @@
 select 
   *, 
   'Final' as LastColumn
-from {{ ref('demo_source_to_import') }}
+from {{ ref('orders_source_to_import') }}

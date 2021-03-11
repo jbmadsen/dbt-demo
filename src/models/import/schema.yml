@@ -20,15 +20,15 @@ models:
               - unique
               - not_null
   
-  - name: demo_source_to_import
+  - name: orders_source_to_import
     description: "Transform data from Source db to Import db"
     columns:
-        - name: Value
+        - name: orders_id
           description: "The primary key for this table"
           tests:
               - unique
               - not_null
-        - name: Loaded_At
+        - name: loaded_at
           description: "Timestamp for when this as loaded into the DW"
           tests:
               - not_null
