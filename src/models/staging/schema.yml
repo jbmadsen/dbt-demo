@@ -8,12 +8,12 @@ models:
       - name: orders_id
         description: "The primary key for this table"
         tests:
-            - unique
-            - not_null
+          - unique
+          - not_null
       - name: loaded_at
         description: "Timestamp for when this as loaded into the DW"
         tests:
-            - not_null
+          - not_null
 
   - name: currency_model_manual
     description: "Import db model created by hand - contains errors"
@@ -21,8 +21,8 @@ models:
       - name: id
         description: "The primary key for this table"
         tests:
-            - unique
-            - not_null
+          - unique
+          - not_null
 
   - name: currency_model_cleaned
     description: "Transformed view of the currency_model_manual model"
@@ -30,9 +30,9 @@ models:
       - name: currency_id
         description: "The primary key for this table"
         tests:
-            - unique
-            - not_null
+          - unique
+          - not_null
       - name: currency
         description: "Currency denomination"
         tests:
-            - not_null
+          - not_null

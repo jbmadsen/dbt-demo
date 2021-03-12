@@ -5,12 +5,12 @@ models:
   - name: orders_staging_to_common
     description: "Transform data from Import db to Common db, and adds indexes to the model"
     columns:
-        - name: orders_id
-          description: "The primary key for this table"
-          tests:
-              - unique
-              - not_null
-        - name: loaded_at
-          description: "Timestamp for when this as loaded into the DW"
-          tests:
-              - not_null
+      - name: orders_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: loaded_at
+        description: "Timestamp for when this as loaded into the DW"
+        tests:
+          - not_null
