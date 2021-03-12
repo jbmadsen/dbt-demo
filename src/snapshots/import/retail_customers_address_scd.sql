@@ -4,9 +4,11 @@
         config(
           target_database='Import',
           target_schema='dbo',
-          strategy='timestamp',
+          
           unique_key='address_id',
-          updated_at='loaded_at',
+          
+          strategy='timestamp',
+          updated_at='updated_at',
         )
     }}
 
@@ -17,7 +19,8 @@
       address_name,
       city,
       country,
-      loaded_at
+      updated_at,
+      dwh_loaded_at
     from {{ source('source', 'retail_crm_customers_address') }}
 
 {% endsnapshot %}

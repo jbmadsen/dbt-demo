@@ -4,9 +4,17 @@
         config(
           target_database='Import',
           target_schema='dbo',
-          strategy='timestamp',
+          
           unique_key='employee_id',
-          updated_at='loaded_at',
+          
+          strategy='check',
+          check_cols=[
+            'store_id', 
+            'first_name',
+            'last_name',
+            'title',
+            'salary',
+            ],
         )
     }}
 
@@ -22,7 +30,7 @@
       hired_date,
       title,
       salary, -- Consider anonymising this - sensitive data!
-      loaded_at
+      dwh_loaded_at
     from {{ source('source', 'retail_crm_employees') }}
 
 {% endsnapshot %}

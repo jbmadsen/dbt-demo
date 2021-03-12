@@ -4,9 +4,16 @@
         config(
           target_database='Import',
           target_schema='dbo',
-          strategy='timestamp',
+
           unique_key='product_id',
-          updated_at='loaded_at',
+
+          strategy='check',
+          check_cols=[
+            'product_name', 
+            'product_type',
+            'product_description',
+            'product_list_price',
+            ],
         )
     }}
 
@@ -18,7 +25,7 @@
       product_type,
       product_description,
       product_list_price,
-      loaded_at
+      loaded_at as dwh_loaded_at
     from {{ source('source', 'retail_crm_products') }}
 
 {% endsnapshot %}

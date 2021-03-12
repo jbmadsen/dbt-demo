@@ -68,7 +68,7 @@ sources: # This keyword specifies that we are talking about sources!
             tests:
               - unique
               - not_null
-          - name: loaded_at
+          - name: dwh_loaded_at
             description: System created date for when data was loaded into database
             tests:
               - not_null
@@ -82,7 +82,7 @@ sources: # This keyword specifies that we are talking about sources!
             tests:
               - unique
               - not_null
-          - name: loaded_at
+          - name: dwh_loaded_at
             description: System created date for when data was loaded into database
             tests:
               - not_null
@@ -96,7 +96,7 @@ sources: # This keyword specifies that we are talking about sources!
             tests:
               - unique
               - not_null
-          - name: loaded_at
+          - name: dwh_loaded_at
             description: System created date for when data was loaded into database
             tests:
               - not_null
@@ -110,7 +110,7 @@ sources: # This keyword specifies that we are talking about sources!
             tests:
               - unique
               - not_null
-          - name: loaded_at
+          - name: dwh_loaded_at
             description: System created date for when data was loaded into database
             tests:
               - not_null

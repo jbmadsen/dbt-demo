@@ -4,9 +4,15 @@
         config(
           target_database='Import',
           target_schema='dbo',
-          strategy='timestamp',
+
           unique_key='order_line_id',
-          updated_at='loaded_at',
+
+          strategy='check',
+          check_cols=[
+            'order_id', 
+            'product_id',
+            'quantity',
+            ],
         )
     }}
 
@@ -17,7 +23,7 @@
       orders_id as order_id,
       product_id,
       quantity,
-      loaded_at
+      dwh_loaded_at
     from {{ source('source', 'retail_crm_orders_lines') }}
 
 {% endsnapshot %}

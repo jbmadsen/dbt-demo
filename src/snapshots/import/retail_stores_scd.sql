@@ -4,9 +4,14 @@
         config(
           target_database='Import',
           target_schema='dbo',
-          strategy='timestamp',
+          
           unique_key='store_id',
-          updated_at='loaded_at',
+          
+          strategy='check',
+          check_cols=[
+            'store_address', 
+            'store_city',
+            ],
         )
     }}
 
@@ -16,8 +21,8 @@
       store_id,
       store_address,
       store_city,
-      store_country
-      loaded_at
+      store_country,
+      loaded_at as dwh_loaded_at
     from {{ source('source', 'retail_crm_stores') }}
 
 {% endsnapshot %}

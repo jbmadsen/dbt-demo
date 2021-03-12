@@ -4,9 +4,11 @@
         config(
           target_database='Import',
           target_schema='dbo',
-          strategy='timestamp',
+          
           unique_key='customer_id',
-          updated_at='loaded_at',
+          
+          strategy='timestamp',
+          updated_at='updated_at',
         )
     }}
 
@@ -19,7 +21,8 @@
       last_name,
       gender,
       customer_since,
-      loaded_at
+      updated_at,
+      dwh_loaded_at
     from {{ source('source', 'retail_crm_customers') }}
 
 {% endsnapshot %}
