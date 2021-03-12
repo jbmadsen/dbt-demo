@@ -3,8 +3,11 @@ pipeline {
 
     stages {
         stage('Build') {
-            script {
+            steps {
                 sh 'echo "--------------- Test ---------------"'
+                sh 'echo "python version....."'
+                sh 'python --version'
+                sh 'echo "install dbt....."'
                 sh 'pip install dbt'
                 sh 'pip freeze list'
                 sh 'echo "run dbt....."'
