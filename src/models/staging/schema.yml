@@ -3,7 +3,7 @@ version: 2
 
 models:
   - name: orders_import_to_staging_demo
-    description: "Transform data from Source db to Import db"
+    description: "Transform data from Import db to Staging db"
     columns:
       - name: orders_id
         description: "The primary key for this table"
@@ -16,7 +16,7 @@ models:
           - not_null
 
   - name: currency_model_manual
-    description: "Import db model created by hand - contains errors"
+    description: "Staging db model created by hand - contains errors"
     columns:
       - name: id
         description: "The primary key for this table"
