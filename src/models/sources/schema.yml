@@ -13,16 +13,12 @@ sources: # This keyword specifies that we are talking about sources!
     freshness: # default freshness
       warn_after: {count: 12, period: hour}
       error_after: {count: 24, period: hour}
-    loaded_at_field: Loaded_At
+    loaded_at_field: loaded_at
 
     tables:
       - name: retail_crm_stores
         description: >
           Contains stores information. Is manually created and updated in this demo.
-        tests:
-        - dbt_expectations.expect_table_row_count_to_be_between:
-            min_value: 1
-            max_value: 40
         columns:
           - name: store_id
             description: Primary key for table
@@ -30,89 +26,93 @@ sources: # This keyword specifies that we are talking about sources!
               - unique
               - not_null
           # - name: store_address # We do NOT need to specify ALL column names, only those we want to comment, test or otherwise describe
+          - name: loaded_at
+            description: System created date for when data was loaded into database
+            tests:
+              - not_null
 
       - name: retail_crm_products
         description: >
           Contains products information. Is manually created and updated in this demo.
-        tests:
-        - dbt_expectations.expect_table_row_count_to_be_between:
-            min_value: 1
-            max_value: 40
         columns:
           - name: product_id
             description: Primary key for table
             tests:
               - unique
               - not_null
+          - name: loaded_at
+            description: System created date for when data was loaded into database
+            tests:
+              - not_null
       
       - name: retail_crm_orders
         description: >
           Contains orders information. Is manually created and updated in this demo.
-        tests:
-        - dbt_expectations.expect_table_row_count_to_be_between:
-            min_value: 1
-            max_value: 40
         columns:
           - name: orders_id
             description: Primary key for table
             tests:
               - unique
               - not_null
+          - name: loaded_at
+            description: System created date for when data was loaded into database
+            tests:
+              - not_null
       
       - name: retail_crm_orders_lines
         description: >
           Contains order-line information. Is manually created and updated in this demo.
-        tests:
-        - dbt_expectations.expect_table_row_count_to_be_between:
-            min_value: 1
-            max_value: 40
         columns:
           - name: orders_line_id
             description: Primary key for table
             tests:
               - unique
               - not_null
+          - name: loaded_at
+            description: System created date for when data was loaded into database
+            tests:
+              - not_null
       
       - name: retail_crm_employees
         description: >
           Contains employees information. Is manually created and updated in this demo.
-        tests:
-        - dbt_expectations.expect_table_row_count_to_be_between:
-            min_value: 1
-            max_value: 40
         columns:
           - name: employees_id
             description: Primary key for table
             tests:
               - unique
               - not_null
+          - name: loaded_at
+            description: System created date for when data was loaded into database
+            tests:
+              - not_null
       
       - name: retail_crm_customers
         description: >
           Contains customers information. Is manually created and updated in this demo.
-        tests:
-        - dbt_expectations.expect_table_row_count_to_be_between:
-            min_value: 1
-            max_value: 40
         columns:
           - name: cust_id
             description: Primary key for table
             tests:
               - unique
               - not_null
+          - name: loaded_at
+            description: System created date for when data was loaded into database
+            tests:
+              - not_null
       
       - name: retail_crm_customers_address
         description: >
           Contains customer address information. Is manually created and updated in this demo.
-        tests:
-        - dbt_expectations.expect_table_row_count_to_be_between:
-            min_value: 1
-            max_value: 40
         columns:
           - name: address_id
             description: Primary key for table
             tests:
               - unique
+              - not_null
+          - name: loaded_at
+            description: System created date for when data was loaded into database
+            tests:
               - not_null
       
       
