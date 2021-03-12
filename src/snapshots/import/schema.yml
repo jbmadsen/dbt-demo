@@ -2,15 +2,93 @@
 version: 2
 
 snapshots:
-  - name: retail_employees_snapshot
+  - name: retail_stores_scd
     description: "Transform employees data from Source db to Import db, as snapshot data"
     columns:
-        - name: employees_id
+        - name: store_id
           description: "The primary key for this table"
           tests:
               - unique
               - not_null
-        - name: Loaded_At
+        - name: loaded_at
+          description: "Timestamp for when this as loaded into the DW"
+          tests:
+              - not_null
+
+  - name: retail_products_scd
+    description: "Transform employees data from Source db to Import db, as snapshot data"
+    columns:
+        - name: product_id
+          description: "The primary key for this table"
+          tests:
+              - unique
+              - not_null
+        - name: loaded_at
+          description: "Timestamp for when this as loaded into the DW"
+          tests:
+              - not_null
+
+  - name: retail_orders_scd
+    description: "Transform employees data from Source db to Import db, as snapshot data"
+    columns:
+        - name: order_id
+          description: "The primary key for this table"
+          tests:
+              - unique
+              - not_null
+        - name: loaded_at
+          description: "Timestamp for when this as loaded into the DW"
+          tests:
+              - not_null
+
+  - name: retail_orders_lines_scd
+    description: "Transform employees data from Source db to Import db, as snapshot data"
+    columns:
+        - name: order_line_id
+          description: "The primary key for this table"
+          tests:
+              - unique
+              - not_null
+        - name: loaded_at
+          description: "Timestamp for when this as loaded into the DW"
+          tests:
+              - not_null
+
+  - name: retail_employees_scd
+    description: "Transform employees data from Source db to Import db, as snapshot data"
+    columns:
+        - name: employee_id
+          description: "The primary key for this table"
+          tests:
+              - unique
+              - not_null
+        - name: loaded_at
+          description: "Timestamp for when this as loaded into the DW"
+          tests:
+              - not_null
+
+  - name: retail_customers_scd
+    description: "Transform employees data from Source db to Import db, as snapshot data"
+    columns:
+        - name: customer_id
+          description: "The primary key for this table"
+          tests:
+              - unique
+              - not_null
+        - name: loaded_at
+          description: "Timestamp for when this as loaded into the DW"
+          tests:
+              - not_null
+
+  - name: retail_customers_address_scd
+    description: "Transform employees data from Source db to Import db, as snapshot data"
+    columns:
+        - name: address_id
+          description: "The primary key for this table"
+          tests:
+              - unique
+              - not_null
+        - name: loaded_at
           description: "Timestamp for when this as loaded into the DW"
           tests:
               - not_null

@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: orders_source_to_import
+  - name: orders_source_to_import_demo
     description: "Transform data from Source db to Import db"
     columns:
       - name: orders_id
