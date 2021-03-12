@@ -31,6 +31,6 @@
       title,
       salary, -- Consider anonymising this - sensitive data!
       dwh_loaded_at
-    from {{ source('source', 'retail_crm_employees') }}
+    from {{ source('import', 'retail_crm_employees') }}
 
 {% endsnapshot %}

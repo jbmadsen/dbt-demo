@@ -13,7 +13,7 @@ sqlserver_demo:
       user: sa
       pass: Secure1337Password
       port: 1433
-      database: Import
+      database: Staging
       schema: dbo
       threads: 4
     prod:
@@ -23,7 +23,7 @@ sqlserver_demo:
       user: not_sa
       pass: super_secret_password
       port: 1433
-      database: Common
+      database: Staging
       schema: dbo
       threads: 4
 

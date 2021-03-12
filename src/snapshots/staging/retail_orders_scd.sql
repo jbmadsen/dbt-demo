@@ -31,6 +31,6 @@
       payment_type, 
       requsts_delivery,
       loaded_at as dwh_loaded_at
-    from {{ source('source', 'retail_crm_orders') }}
+    from {{ source('import', 'retail_crm_orders') }}
 
 {% endsnapshot %}

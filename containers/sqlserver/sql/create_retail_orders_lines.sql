@@ -1,4 +1,6 @@
-drop table if exists Source.dbo.retail_crm_orders_lines;
+use Import;
+
+drop table if exists dbo.retail_crm_orders_lines;
 with vals as (
 	select 1 as orders_line_id, 1 as orders_id, 1 as product_id, 1 as quantity, GETDATE() as dwh_loaded_at
     union all 
@@ -43,6 +45,6 @@ with vals as (
 	select 21 as orders_line_id, 1 as orders_id, 11 as product_id, 10 as quantity, GETDATE() as dwh_loaded_at
 )
 select *
-into Source.dbo.retail_crm_orders_lines
+into dbo.retail_crm_orders_lines
 from vals
 ;

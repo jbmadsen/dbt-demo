@@ -26,6 +26,6 @@
       product_description,
       product_list_price,
       loaded_at as dwh_loaded_at
-    from {{ source('source', 'retail_crm_products') }}
+    from {{ source('import', 'retail_crm_products') }}
 
 {% endsnapshot %}

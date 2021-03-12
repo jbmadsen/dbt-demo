@@ -23,6 +23,6 @@
       store_city,
       store_country,
       loaded_at as dwh_loaded_at
-    from {{ source('source', 'retail_crm_stores') }}
+    from {{ source('import', 'retail_crm_stores') }}
 
 {% endsnapshot %}

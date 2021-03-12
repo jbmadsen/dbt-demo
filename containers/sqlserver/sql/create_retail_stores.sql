@@ -1,4 +1,6 @@
-drop table if exists Source.dbo.retail_crm_stores;
+use Import;
+
+drop table if exists dbo.retail_crm_stores;
 with vals as (
 	select 1 as store_id, 'Lombard Street 1' as store_address, 'San Francisco' as store_city, 'USA' as store_country, GETDATE() as loaded_at
     union all 
@@ -11,7 +13,7 @@ with vals as (
     select 5 as store_id, 'Abbey Road 1121' as store_address, 'London' as store_city, 'UK' as store_country, GETDATE() as loaded_at
 )
 select *
-into Source.dbo.retail_crm_stores
+into dbo.retail_crm_stores
 from vals
 ;
 

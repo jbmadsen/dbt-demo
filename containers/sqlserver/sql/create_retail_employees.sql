@@ -1,4 +1,6 @@
-drop table if exists Source.dbo.retail_crm_employees;
+use Import;
+
+drop table if exists dbo.retail_crm_employees;
 with vals as (
 	select 1 as employees_id, 1 as workplace_id, 'Mark' as first_name, 'Sharon' as last_name, '1999-01-01' as birthdate, 'M' as gender, '2020-02-05' as hired_date, 'Sales Rep' as title, 10500 as salary, GETDATE() as dwh_loaded_at
     union all 
@@ -13,6 +15,6 @@ with vals as (
 	select 6 as employees_id, 1 as workplace_id, 'Emily' as first_name, 'Peters' as last_name, '2005-05-04' as birthdate, 'F' as gender, '2021-02-05' as hired_date, 'Sales Rep' as title, 10000 as salary, GETDATE() as dwh_loaded_at
 )
 select *
-into Source.dbo.retail_crm_employees
+into dbo.retail_crm_employees
 from vals
 ;

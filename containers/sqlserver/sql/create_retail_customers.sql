@@ -1,4 +1,6 @@
-drop table if exists Source.dbo.retail_crm_customers;
+use Import;
+
+drop table if exists dbo.retail_crm_customers;
 with vals as (
 	select 1 as cust_id, 1 as address_id, 'James' as first_name, 'Steph' as last_name, 'M' as gender, '1999-01-01' as customer_since, GETDATE() as updated_at, GETDATE() as dwh_loaded_at
     union all 
@@ -13,6 +15,6 @@ with vals as (
 	select 6 as cust_id, 2 as address_id, 'Richard' as first_name, 'Tyler' as last_name, 'M' as gender, '2005-05-04' as customer_since, GETDATE() as updated_at, GETDATE() as dwh_loaded_at
 )
 select *
-into Source.dbo.retail_crm_customers
+into dbo.retail_crm_customers
 from vals
 ;

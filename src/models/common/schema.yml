@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: demo_import_to_common
+  - name: orders_staging_to_common
     description: "Transform data from Import db to Common db, and adds indexes to the model"
     columns:
         - name: orders_id

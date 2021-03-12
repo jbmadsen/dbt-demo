@@ -49,8 +49,12 @@ vars:
 models:
   # Be sure to namespace your model configs to your project name
   dbt_demo:
-    # This configures models found in models/import/
+    # This configures models found in models/import/ - most data should be loaded in by an EL tool
     import:
+      +enabled: true
+      materialized: table
+    # This configures models found in models/staging/
+    staging:
       +enabled: true
       materialized: view
       # This configures models found in models/import/base (example only)

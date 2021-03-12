@@ -1,4 +1,6 @@
-drop table if exists Source.dbo.retail_crm_customers_address;
+use Import;
+
+drop table if exists dbo.retail_crm_customers_address;
 with vals as (
 	select 1 as address_id, 'Lombard Road 341' as address_name, 'San Francisco' as city, 'USA' as country, GETDATE() as updated_at, GETDATE() as dwh_loaded_at
     union all 
@@ -13,6 +15,6 @@ with vals as (
 	select 6 as address_id, 'Lombard Ocean Road 143' as address_name, 'San Francisco' as city, 'USA' as country, GETDATE() as updated_at, GETDATE() as dwh_loaded_at
 )
 select *
-into Source.dbo.retail_crm_customers_address
+into dbo.retail_crm_customers_address
 from vals
 ;

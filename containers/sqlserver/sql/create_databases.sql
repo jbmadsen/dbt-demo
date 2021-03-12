@@ -3,9 +3,9 @@ GO
 USE Import;
 GO
 
-CREATE DATABASE Source;
+CREATE DATABASE Staging;
 GO
-USE Source;
+USE Staging;
 GO
 
 CREATE DATABASE Common;

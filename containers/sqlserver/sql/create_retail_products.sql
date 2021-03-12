@@ -1,4 +1,6 @@
-drop table if exists Source.dbo.retail_crm_products;
+use Import;
+
+drop table if exists dbo.retail_crm_products;
 with vals as (
 	select 1 as product_id, 'Almonds' as product_name, 'Food Product' as product_type, 'Bla bla' as product_description, 40 as product_list_price, GETDATE() as loaded_at
     union all 
@@ -23,6 +25,6 @@ with vals as (
 	select 11 as product_id, 'Discount' as product_name, 'Discount' as product_type, 'Discount' as product_description, -2 as product_list_price, GETDATE() as loaded_at
 )
 select *
-into Source.dbo.retail_crm_products
+into dbo.retail_crm_products
 from vals
 ;

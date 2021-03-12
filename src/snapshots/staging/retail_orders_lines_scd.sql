@@ -24,6 +24,6 @@
       product_id,
       quantity,
       dwh_loaded_at
-    from {{ source('source', 'retail_crm_orders_lines') }}
+    from {{ source('import', 'retail_crm_orders_lines') }}
 
 {% endsnapshot %}

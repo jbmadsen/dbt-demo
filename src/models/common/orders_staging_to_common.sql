@@ -14,4 +14,4 @@
 select 
   *, 
   'Final' as LastColumn
-from {{ ref('orders_source_to_import_demo') }}
+from {{ ref('orders_import_to_staging_demo') }}
