@@ -57,10 +57,6 @@ models:
     staging:
       +enabled: true
       materialized: view
-      # This configures models found in models/import/base (example only)
-      # These models will be ephemeral, as the config above is overridden
-      #base:
-      #  +materialized: ephemeral
     # This configures models found in models/common/
     common:
       #+database: Common

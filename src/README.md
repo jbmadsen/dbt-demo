@@ -21,6 +21,7 @@ Seed data:
 
 Running:
 - dbt run --profiles-dir /home/git/dbt-demo/profiles
+- dbt snapshot --profiles-dir /home/git/dbt-demo/profiles
 
 Testing:
 - dbt test --profiles-dir /home/git/dbt-demo/profiles
