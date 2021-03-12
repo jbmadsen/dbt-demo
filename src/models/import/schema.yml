@@ -2,33 +2,37 @@
 version: 2
 
 models:
-  - name: first_import_model
-    description: "A starter dbt model"
-    columns:
-        - name: id
-          description: "The primary key for this table"
-          tests:
-              - unique
-              - not_null
-
-  - name: second_import_model
-    description: "A starter dbt model"
-    columns:
-        - name: id
-          description: "The primary key for this table"
-          tests:
-              - unique
-              - not_null
-  
   - name: orders_source_to_import
     description: "Transform data from Source db to Import db"
     columns:
-        - name: orders_id
-          description: "The primary key for this table"
-          tests:
-              - unique
-              - not_null
-        - name: loaded_at
-          description: "Timestamp for when this as loaded into the DW"
-          tests:
-              - not_null
+      - name: orders_id
+        description: "The primary key for this table"
+        tests:
+            - unique
+            - not_null
+      - name: loaded_at
+        description: "Timestamp for when this as loaded into the DW"
+        tests:
+            - not_null
+
+  - name: currency_model_manual
+    description: "Import db model created by hand - contains errors"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+            - unique
+            - not_null
+
+  - name: currency_model_cleaned
+    description: "Transformed view of the currency_model_manual model"
+    columns:
+      - name: currency_id
+        description: "The primary key for this table"
+        tests:
+            - unique
+            - not_null
+      - name: currency
+        description: "Currency denomination"
+        tests:
+            - not_null

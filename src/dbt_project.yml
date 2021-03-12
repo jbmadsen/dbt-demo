@@ -59,5 +59,6 @@ models:
       #  +materialized: ephemeral
     # This configures models found in models/common/
     common:
+      #+database: Common
       +enabled: true
       materialized: table

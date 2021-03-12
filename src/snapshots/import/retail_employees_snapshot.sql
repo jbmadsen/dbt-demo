@@ -5,8 +5,8 @@
           target_database='Import',
           target_schema='dbo',
           strategy='timestamp',
-          unique_key='UserID',
-          updated_at='Loaded_At',
+          unique_key='employees_id',
+          updated_at='loaded_at',
         )
     }}
 

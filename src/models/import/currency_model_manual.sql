@@ -11,19 +11,14 @@
 
 with source_data as (
 
-    select 1 as id
+    select 1 as id, 'DKK' as currency
     union all
-    select 2 as id
+    select 2, 'USD' 
     union all
-    select null as id
+    select 3, 'EUR' 
+    union all
+    select 4, null
 
 )
-
 select *
 from source_data
-
-/*
-    Uncomment the line below to remove records with null `id` values
-*/
-
--- where id is not null
