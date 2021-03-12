@@ -2,7 +2,7 @@
 
     {{
         config(
-          target_database='Import',
+          target_database='Staging',
           target_schema='dbo',
           
           unique_key='employee_id',
