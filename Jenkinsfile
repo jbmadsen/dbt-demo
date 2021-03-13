@@ -29,13 +29,20 @@ pipeline {
         }
 
         stage('Build') {
+            failFast true
             parallel {
-                steps {
-                    echo 'Buildin 1...'
+                stage('Run') {
+                    agent any
+                    steps {
+                        echo "Running..."
+                    }
                 }
                 
-                steps {
-                    echo 'Buildin 2...'
+                stage('Snapshot') {
+                    agent any
+                    steps {
+                        echo "Snapshotting..."
+                    }
                 }
             }
         }
