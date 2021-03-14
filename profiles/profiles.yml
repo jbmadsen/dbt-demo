@@ -14,7 +14,17 @@ sqlserver_demo:
       pass: Secure1337Password
       port: 1433
       database: Staging
-      schema: dbo
+      schema: dev
+      threads: 4
+    uat:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server'
+      host: 172.23.0.2
+      user: sa
+      pass: Secure1337Password
+      port: 1433
+      database: Staging
+      schema: uat
       threads: 4
     prod:
       type: sqlserver
