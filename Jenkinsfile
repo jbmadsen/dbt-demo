@@ -68,6 +68,17 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
+                /*
+                TODO:
+                1) Deploy to prod
+                2) Generate docs
+                3) Export docs somewhere?
+                4) Look into manifest.json and the other compiled items
+                    4.1) From there, determine list of jobs schedule to be created
+                         Inspiration: 
+                            https://www.astronomer.io/blog/airflow-dbt-1 
+                            https://www.astronomer.io/blog/airflow-dbt-2
+                */
             }
         }
     }
