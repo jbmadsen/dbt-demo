@@ -35,6 +35,10 @@ pipeline {
                     agent any
                     steps {
                         echo "Running..."
+                        /*
+                        TODO:
+                        dbt run --profiles-dir /home/git/dbt-demo/profiles --target uat --models state:modified 
+                        */
                     }
                 }
                 
@@ -42,6 +46,10 @@ pipeline {
                     agent any
                     steps {
                         echo "Snapshotting..."
+                        /*
+                        TODO:
+                        dbt snapshot --profiles-dir /home/git/dbt-demo/profiles --target uat --models state:modified 
+                        */
                     }
                 }
             }
@@ -50,6 +58,10 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
+                /*
+                TODO:
+                dbt test --profiles-dir /home/git/dbt-demo/profiles --target uat
+                */
             }
         }
         
