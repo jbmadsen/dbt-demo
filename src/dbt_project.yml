@@ -57,6 +57,12 @@ models:
     staging:
       +enabled: true
       materialized: view
+      +schema: |
+        {%- if  target.name == "dev" -%} dev
+        {%- elif target.name == "uat"  -%} uat
+        {%- elif target.name == "prod"  -%} dbo
+        {%- else -%} err
+        {%- endif -%}
     # This configures models found in models/common/
     common:
       #+database: Common
