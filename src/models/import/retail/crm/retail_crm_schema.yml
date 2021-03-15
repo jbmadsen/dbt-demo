@@ -27,7 +27,7 @@ sources: # This keyword specifies that we are talking about sources!
               - not_null
           # - name: store_address # We do NOT need to specify ALL column names, only those we want to comment, test or otherwise describe
           - name: loaded_at
-            description: System created date for when data was loaded into database
+            description: "{{ doc('dwh_loaded_at_description') }}"
             tests:
               - not_null
 
@@ -41,7 +41,7 @@ sources: # This keyword specifies that we are talking about sources!
               - unique
               - not_null
           - name: loaded_at
-            description: System created date for when data was loaded into database
+            description: "{{ doc('dwh_loaded_at_description') }}"
             tests:
               - not_null
       
@@ -55,7 +55,7 @@ sources: # This keyword specifies that we are talking about sources!
               - unique
               - not_null
           - name: loaded_at
-            description: System created date for when data was loaded into database
+            description: "{{ doc('dwh_loaded_at_description') }}"
             tests:
               - not_null
       
@@ -69,7 +69,7 @@ sources: # This keyword specifies that we are talking about sources!
               - unique
               - not_null
           - name: dwh_loaded_at
-            description: System created date for when data was loaded into database
+            description: "{{ doc('dwh_loaded_at_description') }}"
             tests:
               - not_null
       
@@ -83,7 +83,7 @@ sources: # This keyword specifies that we are talking about sources!
               - unique
               - not_null
           - name: dwh_loaded_at
-            description: System created date for when data was loaded into database
+            description: "{{ doc('dwh_loaded_at_description') }}"
             tests:
               - not_null
       
@@ -97,7 +97,7 @@ sources: # This keyword specifies that we are talking about sources!
               - unique
               - not_null
           - name: dwh_loaded_at
-            description: System created date for when data was loaded into database
+            description: "{{ doc('dwh_loaded_at_description') }}"
             tests:
               - not_null
       
@@ -111,7 +111,7 @@ sources: # This keyword specifies that we are talking about sources!
               - unique
               - not_null
           - name: dwh_loaded_at
-            description: System created date for when data was loaded into database
+            description: "{{ doc('dwh_loaded_at_description') }}"
             tests:
               - not_null
       

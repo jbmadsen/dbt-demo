@@ -3,7 +3,7 @@ version: 2
 
 snapshots:
   - name: retail_customers_address_scd
-    description: "Transform employees data from Import db to Staging db, as snapshot data"
+    description: "Transform customers address data from Import db to Staging db, as snapshot data"
     columns:
       - name: address_id
         description: "The primary key for this table"
@@ -11,6 +11,6 @@ snapshots:
           - unique
           - not_null
       - name: dwh_loaded_at
-        description: "Timestamp for when this as loaded into the DW"
+        description: "{{ doc('dwh_loaded_at_description') }}"
         tests:
           - not_null

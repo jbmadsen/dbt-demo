@@ -11,6 +11,6 @@ snapshots:
           - unique
           - not_null
       - name: dwh_loaded_at
-        description: "Timestamp for when this as loaded into the DW"
+        description: "{{ doc('dwh_loaded_at_description') }}"
         tests:
           - not_null
