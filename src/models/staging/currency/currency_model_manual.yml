@@ -1,0 +1,12 @@
+
+version: 2
+
+models:
+  - name: currency_model_manual
+    description: "Staging db model created by hand - contains errors"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null

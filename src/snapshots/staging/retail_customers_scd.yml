@@ -1,0 +1,16 @@
+
+version: 2
+
+snapshots:
+  - name: retail_customers_scd
+    description: "Transform employees data from Import db to Staging db, as snapshot data"
+    columns:
+      - name: customer_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: dwh_loaded_at
+        description: "Timestamp for when this as loaded into the DW"
+        tests:
+          - not_null
