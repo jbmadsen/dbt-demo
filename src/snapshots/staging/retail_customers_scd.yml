@@ -10,6 +10,12 @@ snapshots:
         tests:
           - unique
           - not_null
+      - name: address_id
+        description: "Customer Address relation"
+        tests:
+          - relationships:
+              to: ref('retail_customers_address_scd')
+              field: address_id
       - name: dwh_loaded_at
         description: "{{ doc('dwh_loaded_at_description') }}"
         tests:
