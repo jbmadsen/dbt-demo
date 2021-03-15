@@ -1,0 +1,19 @@
+
+version: 2
+
+exposures:
+  - name: quarterly_retail_analysis
+    type: notebook
+    maturity: low
+    url: http://localhost:8888/lab/workspaces/auto-7
+    description: >
+      Currently experimental model analysis based on retail CRM data
+    
+    depends_on:
+      - ref('retail_products_scd')
+      - ref('retail_orders_scd')
+      - ref('currency_model_cleaned')
+      
+    owner:
+      name: JBM
+      email: jacob@jbmadsen.com
