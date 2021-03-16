@@ -14,6 +14,13 @@ pipeline {
 
     /* Pipeline stages defined as a sequence of one or more tasks - the bulk of the work */
     stages {
+        stage('Cleanup') {
+            steps {
+                // Clean before build
+                cleanWs()
+            }
+        }
+
         stage('Setup dbt') {
             steps {
                 sh 'echo "--------------- Test ---------------"'
