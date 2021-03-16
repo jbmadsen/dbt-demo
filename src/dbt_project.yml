@@ -43,6 +43,7 @@ vars:
 
 
 # Before every run of every model - create audit table in current database and current schema for recording transform times
+# Inspiration: https://github.com/fishtown-analytics/dbt/issues/903
 on-run-start:
   - "IF NOT EXISTS (
         SELECT * 
