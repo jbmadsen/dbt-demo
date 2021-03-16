@@ -42,6 +42,16 @@ vars:
   'dbt_date:time_zone': 'Europe/Copenhagen'
 
 
+# Before every run of every model - create audit table in current database and current schema for recording transform times
+on-run-start:
+  - "IF NOT EXISTS (
+        SELECT * 
+        FROM sys.tables t 
+        INNER JOIN sys.schemas s ON (t.schema_id = s.schema_id) 
+        WHERE s.name = '{{ target.schema }}' and t.name = 'audit_dbt_runs') 
+      CREATE TABLE {{ target.schema }}.audit_dbt_runs (model VARCHAR(100), state VARCHAR(10), time DATETIME)"
+
+
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -49,6 +59,12 @@ vars:
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
+  # Before every run of every model
+  +pre-hook:
+    - "INSERT INTO {{ target.database }}.{{ target.schema }}.audit_dbt_runs (model, state, time) values ('{{this.name}}', 'start', GETDATE())"
+  # After every run of every model
+  +post-hook:
+    - "INSERT INTO {{ target.database }}.{{ target.schema }}.audit_dbt_runs (model, state, time) values ('{{this.name}}', 'end', GETDATE())"
   # Be sure to namespace your model configs to your project name
   dbt_demo:
     # This configures models found in models/import/ - most data should be loaded in by an EL tool
