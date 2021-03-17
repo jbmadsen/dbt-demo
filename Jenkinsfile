@@ -21,17 +21,34 @@ pipeline {
         //     }
         // }
 
-        stage('Setup dbt') {
-            steps {
-                sh 'echo "--------------- Test ---------------"'
-                sh 'echo "python version....."'
-                sh 'python --version'
-                sh 'echo "install dbt....."'
-                sh 'pip install dbt'
-                sh 'pip freeze list'
-                sh 'echo "run dbt....."'
-                sh 'dbt --version'
-                sh 'echo "--------------- Test ---------------"'
+        
+        stage('Setup') {
+            failFast true
+            parallel {
+                stage('Setup dbt') {
+                    steps {
+                        sh 'echo "--------------- Test ---------------"'
+                        sh 'echo "python version....."'
+                        sh 'python --version'
+                        sh 'echo "install dbt....."'
+                        sh 'pip install dbt'
+                        sh 'pip freeze list'
+                        sh 'echo "run dbt....."'
+                        sh 'dbt --version'
+                        sh 'echo "--------------- Test ---------------"'
+                    }
+                }
+
+                stage('Checkout') {
+                    steps {
+                        script {
+                            // The below will clone your repo and will be checked out to master branch by default.
+                            git url: 'https://github.com/jbmadsen/dbt-demo.git'
+                            // Checkout to a specific branch in your repo.
+                            sh "git checkout master"
+                        }
+                    }
+                }
             }
         }
 
@@ -42,6 +59,7 @@ pipeline {
                     agent any
                     steps {
                         echo "Running..."
+                        // echo "dbt run --profiles-dir ./profiles --target uat"
                         /*
                         TODO:
                         dbt run --profiles-dir /home/git/dbt-demo/profiles --target uat --models state:modified 
@@ -53,6 +71,7 @@ pipeline {
                     agent any
                     steps {
                         echo "Snapshotting..."
+                        // echo "dbt snapshot --profiles-dir ./profiles --target uat"
                         /*
                         TODO:
                         dbt snapshot --profiles-dir /home/git/dbt-demo/profiles --target uat --models state:modified 
@@ -65,6 +84,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
+                // echo "dbt test --profiles-dir ./profiles --target uat"
                 /*
                 TODO:
                 dbt test --profiles-dir /home/git/dbt-demo/profiles --target uat
