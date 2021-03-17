@@ -47,11 +47,10 @@ pipeline {
                     agent any
                     steps {
                         sh 'echo "running..."'
-                        sh "cd src"
-                        sh "ls"
-                        sh "dbt run --profiles-dir ./profiles --target uat"
+                        dir("src") {
+                            sh "dbt run --profiles-dir ./profiles --target uat"
+                        }
                         /*
-                        TODO:
                         dbt run --profiles-dir /home/git/dbt-demo/profiles --target uat --models state:modified 
                         */
                     }
@@ -61,11 +60,10 @@ pipeline {
                     agent any
                     steps {
                         sh 'echo "snapshotting..."'
-                        sh "cd src"
-                        sh "ls"
-                        sh "dbt snapshot --profiles-dir ./profiles --target uat"
+                        dir("src") {
+                            sh "dbt snapshot --profiles-dir ./profiles --target uat"
+                        }
                         /*
-                        TODO:
                         dbt snapshot --profiles-dir /home/git/dbt-demo/profiles --target uat --models state:modified 
                         */
                     }
@@ -76,10 +74,10 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'echo "testing..."'
-                sh "cd src"
-                sh "dbt test --profiles-dir ./profiles --target uat"
+                dir("src") {
+                    sh "dbt test --profiles-dir ./profiles --target uat"
+                }
                 /*
-                TODO:
                 dbt test --profiles-dir /home/git/dbt-demo/profiles --target uat
                 */
             }
