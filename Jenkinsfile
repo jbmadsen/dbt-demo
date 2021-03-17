@@ -14,14 +14,6 @@ pipeline {
 
     /* Pipeline stages defined as a sequence of one or more tasks - the bulk of the work */
     stages {
-        // stage('Cleanup') {
-        //     steps {
-        //         // Clean before build
-        //         cleanWs()
-        //     }
-        // }
-
-        
         stage('Setup') {
             failFast true
             parallel {
@@ -40,10 +32,10 @@ pipeline {
                 }
 
                 stage('Checkout') {
-                    node(nodename) {
+                    steps {
                         sh 'mkdir -p build'
                         dir('build') {
-                            checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/ianmiell/shutit']]])
+                            git url: 'https://github.com/jbmadsen/dbt-demo'
                         }
                     }
                 }
