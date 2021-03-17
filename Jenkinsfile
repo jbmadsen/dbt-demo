@@ -48,6 +48,7 @@ pipeline {
                     steps {
                         sh 'echo "running..."'
                         sh "cd src"
+                        sh "ls"
                         sh "dbt run --profiles-dir ./profiles --target uat"
                         /*
                         TODO:
@@ -61,6 +62,7 @@ pipeline {
                     steps {
                         sh 'echo "snapshotting..."'
                         sh "cd src"
+                        sh "ls"
                         sh "dbt snapshot --profiles-dir ./profiles --target uat"
                         /*
                         TODO:
