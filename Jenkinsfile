@@ -20,12 +20,12 @@ pipeline {
                 stage('Setup dbt') {
                     steps {
                         sh 'echo "--------------- Test ---------------"'
-                        sh 'echo "python version....."'
+                        sh 'echo "python version..."'
                         sh 'python --version'
-                        sh 'echo "install dbt....."'
+                        sh 'echo "install dbt..."'
                         sh 'pip install dbt'
                         sh 'pip freeze list'
-                        sh 'echo "run dbt....."'
+                        sh 'echo "run dbt..."'
                         sh 'dbt --version'
                         sh 'echo "--------------- Test ---------------"'
                     }
@@ -46,9 +46,9 @@ pipeline {
                 stage('Run') {
                     agent any
                     steps {
-                        echo "Running..."
-                        echo "cd src"
-                        echo "dbt run --profiles-dir ./profiles --target uat"
+                        sh 'echo "running..."'
+                        sh "cd src"
+                        sh "dbt run --profiles-dir ./profiles --target uat"
                         /*
                         TODO:
                         dbt run --profiles-dir /home/git/dbt-demo/profiles --target uat --models state:modified 
@@ -59,9 +59,9 @@ pipeline {
                 stage('Snapshot') {
                     agent any
                     steps {
-                        echo "Snapshotting..."
-                        echo "cd src"
-                        echo "dbt snapshot --profiles-dir ./profiles --target uat"
+                        sh 'echo "snapshotting..."'
+                        sh "cd src"
+                        sh "dbt snapshot --profiles-dir ./profiles --target uat"
                         /*
                         TODO:
                         dbt snapshot --profiles-dir /home/git/dbt-demo/profiles --target uat --models state:modified 
@@ -73,9 +73,9 @@ pipeline {
         
         stage('Test') {
             steps {
-                echo 'Testing...'
-                echo "cd src"
-                echo "dbt test --profiles-dir ./profiles --target uat"
+                sh 'echo "testing..."'
+                sh "cd src"
+                sh "dbt test --profiles-dir ./profiles --target uat"
                 /*
                 TODO:
                 dbt test --profiles-dir /home/git/dbt-demo/profiles --target uat
