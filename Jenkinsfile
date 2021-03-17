@@ -40,10 +40,10 @@ pipeline {
                 }
 
                 stage('Checkout') {
-                    steps {
-                        script {
-                            // The below will clone your repo and will be checked out to master branch by default.
-                            git url: 'https://github.com/jbmadsen/dbt-demo.git'
+                    node(nodename) {
+                        sh 'mkdir -p build'
+                        dir('build') {
+                            checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/ianmiell/shutit']]])
                         }
                     }
                 }
@@ -57,6 +57,7 @@ pipeline {
                     agent any
                     steps {
                         echo "Running..."
+                        echo "cd build"
                         // echo "dbt run --profiles-dir ./profiles --target uat"
                         /*
                         TODO:
@@ -69,6 +70,7 @@ pipeline {
                     agent any
                     steps {
                         echo "Snapshotting..."
+                        echo "cd build"
                         // echo "dbt snapshot --profiles-dir ./profiles --target uat"
                         /*
                         TODO:
@@ -82,6 +84,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
+                echo "cd build"
                 // echo "dbt test --profiles-dir ./profiles --target uat"
                 /*
                 TODO:
