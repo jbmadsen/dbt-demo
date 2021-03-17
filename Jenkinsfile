@@ -48,7 +48,7 @@ pipeline {
                     steps {
                         sh 'echo "running..."'
                         dir("src") {
-                            sh "dbt run --profiles-dir ${WORKSPACE}/src/profiles --target uat"
+                            sh "dbt run --profiles-dir ${WORKSPACE}/profiles --target uat"
                         }
                         /*
                         dbt run --profiles-dir /home/git/dbt-demo/profiles --target uat --models state:modified 
@@ -61,7 +61,7 @@ pipeline {
                     steps {
                         sh 'echo "snapshotting..."'
                         dir("src") {
-                            sh "dbt snapshot --profiles-dir ${WORKSPACE}/src/profiles --target uat"
+                            sh "dbt snapshot --profiles-dir ${WORKSPACE}/profiles --target uat"
                         }
                         /*
                         dbt snapshot --profiles-dir /home/git/dbt-demo/profiles --target uat --models state:modified 
@@ -75,7 +75,7 @@ pipeline {
             steps {
                 sh 'echo "testing..."'
                 dir("src") {
-                    sh "dbt test --profiles-dir ${WORKSPACE}/src/profiles --target uat"
+                    sh "dbt test --profiles-dir ${WORKSPACE}/profiles --target uat"
                 }
                 /*
                 dbt test --profiles-dir /home/git/dbt-demo/profiles --target uat
