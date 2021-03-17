@@ -91,12 +91,13 @@ pipeline {
     }
 
     /* Pun upon the completion of stages */
-    // post { 
-    //     always { 
-    //         cleanWs()
-    //         echo 'Done'
-    //     }
-    // }
+    post { 
+        always { 
+            //cleanWs()
+            deleteDir() /* clean up our workspace */
+            echo 'Done'
+        }
+    }
 
     /* Done */
 }
