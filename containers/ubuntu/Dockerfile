@@ -31,7 +31,8 @@ RUN apt-get update \
   && echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc \
   && apt-get install unixodbc-dev -y \
   && pip install dbt \
-  && pip install dbt-sqlserver
+  && pip install dbt-sqlserver \
+  && pip install olivertwist
 
 WORKDIR /home/git
 
