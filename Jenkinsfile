@@ -112,7 +112,7 @@ pipeline {
     post { 
         always { 
             //cleanWs()
-            deleteDir() /* clean up our workspace */
+            //deleteDir() /* clean up our workspace */
             echo 'Done'
         }
     }
