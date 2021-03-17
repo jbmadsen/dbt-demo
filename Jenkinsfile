@@ -44,8 +44,6 @@ pipeline {
                         script {
                             // The below will clone your repo and will be checked out to master branch by default.
                             git url: 'https://github.com/jbmadsen/dbt-demo.git'
-                            // Checkout to a specific branch in your repo.
-                            sh "git checkout master"
                         }
                     }
                 }
