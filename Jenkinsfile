@@ -48,7 +48,7 @@ pipeline {
                     steps {
                         echo "Running..."
                         echo "cd src"
-                        // echo "dbt run --profiles-dir ./profiles --target uat"
+                        echo "dbt run --profiles-dir ./profiles --target uat"
                         /*
                         TODO:
                         dbt run --profiles-dir /home/git/dbt-demo/profiles --target uat --models state:modified 
@@ -61,7 +61,7 @@ pipeline {
                     steps {
                         echo "Snapshotting..."
                         echo "cd src"
-                        // echo "dbt snapshot --profiles-dir ./profiles --target uat"
+                        echo "dbt snapshot --profiles-dir ./profiles --target uat"
                         /*
                         TODO:
                         dbt snapshot --profiles-dir /home/git/dbt-demo/profiles --target uat --models state:modified 
@@ -75,7 +75,7 @@ pipeline {
             steps {
                 echo 'Testing...'
                 echo "cd src"
-                // echo "dbt test --profiles-dir ./profiles --target uat"
+                echo "dbt test --profiles-dir ./profiles --target uat"
                 /*
                 TODO:
                 dbt test --profiles-dir /home/git/dbt-demo/profiles --target uat
