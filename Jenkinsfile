@@ -31,12 +31,12 @@ pipeline {
                     }
                 }
 
-                stage('Checkout') {
-                    steps {
-                        git branch: 'master',
-                            url: 'https://github.com/jbmadsen/dbt-demo'
-                    }
-                }
+                // stage('Checkout') {
+                //     steps {
+                //         git branch: 'master',
+                //             url: 'https://github.com/jbmadsen/dbt-demo'
+                //     }
+                // }
             }
         }
 
@@ -105,7 +105,7 @@ pipeline {
     post { 
         always { 
             //cleanWs()
-            //deleteDir() /* clean up our workspace */
+            deleteDir() /* clean up our workspace */
             echo 'Done'
         }
     }
