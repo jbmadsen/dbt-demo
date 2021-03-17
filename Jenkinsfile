@@ -33,10 +33,8 @@ pipeline {
 
                 stage('Checkout') {
                     steps {
-                        sh 'mkdir -p build'
-                        dir('build') {
-                            git url: 'https://github.com/jbmadsen/dbt-demo'
-                        }
+                        git branch: 'master',
+                            url: 'https://github.com/jbmadsen/dbt-demo'
                     }
                 }
             }
@@ -49,7 +47,7 @@ pipeline {
                     agent any
                     steps {
                         echo "Running..."
-                        echo "cd build"
+                        echo "cd src"
                         // echo "dbt run --profiles-dir ./profiles --target uat"
                         /*
                         TODO:
@@ -62,7 +60,7 @@ pipeline {
                     agent any
                     steps {
                         echo "Snapshotting..."
-                        echo "cd build"
+                        echo "cd src"
                         // echo "dbt snapshot --profiles-dir ./profiles --target uat"
                         /*
                         TODO:
@@ -76,7 +74,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
-                echo "cd build"
+                echo "cd src"
                 // echo "dbt test --profiles-dir ./profiles --target uat"
                 /*
                 TODO:
