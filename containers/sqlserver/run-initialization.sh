@@ -13,13 +13,13 @@ db = "master"
 /opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/create_databases.sql
 
 # Create initial tables
-/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/create_retail_customers_address.sql
-/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/create_retail_customers.sql
-/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/create_retail_employees.sql
-/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/create_retail_orders_lines.sql
-/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/create_retail_orders.sql
-/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/create_retail_products.sql
-/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/create_retail_stores.sql
+/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/seed/create_retail_customers_address.sql
+/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/seed/create_retail_customers.sql
+/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/seed/create_retail_employees.sql
+/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/seed/create_retail_orders_lines.sql
+/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/seed/create_retail_orders.sql
+/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/seed/create_retail_products.sql
+/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i sql/seed/create_retail_stores.sql
 
 # Done
 
