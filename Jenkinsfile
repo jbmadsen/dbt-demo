@@ -25,6 +25,7 @@ pipeline {
                         sh 'echo "install dbt..."'
                         sh 'pip install dbt'
                         sh 'pip install dbt-sqlserver'
+                        sh 'pip install pyodbc'
                         sh 'pip freeze list'
                         sh 'echo "run dbt..."'
                         sh 'dbt --version'
