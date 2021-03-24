@@ -44,7 +44,8 @@ for schedule in all_schedules:
 
 print("Connecting to SQL Server")
 # Connect to SQL Server
-connection = pyodbc.connect('Driver={SQL Server};'
+connection = pyodbc.connect(#'Driver={SQL Server};'
+                            'Driver={/opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.0.so.1.1};'
                             'Server=172.23.0.2;'
                             #'Server=127.0.0.1;'
                             'Database=Common;'
