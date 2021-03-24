@@ -11,3 +11,9 @@ profiles/.user.yml
 src/target/
 src/dbt_modules/
 src/logs/
+
+#python
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints
