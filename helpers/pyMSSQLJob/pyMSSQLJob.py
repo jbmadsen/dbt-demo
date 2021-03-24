@@ -3,9 +3,6 @@ import os # comes with python
 import yaml # pip install pyyaml
 
 
-
-
-
 class JobSchedule:
     """
     Model representing a Job Schedule

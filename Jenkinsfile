@@ -100,6 +100,14 @@ pipeline {
                 */
             }
         }
+
+        stage('Apply Agent Jobs') {
+            steps {
+                dir("./") {
+                    sh "python helpers/apply_schedules.py"
+                }
+            }
+        }
     }
 
     /* Pun upon the completion of stages */

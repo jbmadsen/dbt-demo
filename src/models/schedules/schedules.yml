@@ -1,0 +1,46 @@
+
+version: 2
+
+schedules:
+  - name: every_five_minute
+    description: "Every five minutes testing if this works"
+    schedule: #"*/5 * * * *"
+        frequency_type: "Daily" 
+        frequency_interval: 2 # every 2 days
+        frequency_subday_type: null
+        frequency_subday_interval: null
+        frequency_relative_interval: null
+        frequency_recurrence_factor: 1
+        active_start_date: 20210101
+        active_end_date: 20370101
+        active_start_time: 10000
+        active_end_time: null
+    steps:
+      - name: compile
+        command: dbt compile --model +demo_model+
+      - name: snapshot
+        command: dbt snapshot --model +demo_model+
+      - name: test
+        command: dbt test --model +demo_model+
+
+  - name: every_minute
+    description: "testing if I can parse this for some reason, every minute"
+    schedule: #"* * * * *" # CRON style every minute
+        frequency_type: "Weekly" 
+        frequency_interval: "Monday|Tuesday|Wednesday"
+        frequency_subday_type: "Minutes"
+        frequency_subday_interval: 5
+        frequency_relative_interval: null
+        frequency_recurrence_factor: 1
+        active_start_date: 20210101
+        active_end_date: 20370101
+        active_start_time: 80000
+        active_end_time: 160000
+    steps:
+      - name: compile
+        command: dbt compile --model +currency_model_manual+
+      - name: run
+        command: dbt run --model +currency_model_manual+
+      - name: test
+        command: dbt test --model +currency_model_manual+
+
