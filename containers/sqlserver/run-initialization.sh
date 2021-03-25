@@ -5,10 +5,10 @@ echo "Sleeping"
 sleep 90s
 
 # Variables
-host = "localhost"
-user = "sa"
-pass = "Secure1337Password"
-db = "master"
+host="localhost"
+user="sa"
+pass="Secure1337Password"
+db="master"
 
 # Run the setup script to create the DB and the schema in the DB
 # Note: make sure that your password matches what is in the Dockerfile
