@@ -26,5 +26,8 @@ echo "Seeding databases"
 /opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i /usr/src/app/sql/seed/create_retail_products.sql
 /opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i /usr/src/app/sql/seed/create_retail_stores.sql
 
+# Applying additional configuration
+/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i /usr/src/app/sql/config/config.sql
+
 # Done
 
