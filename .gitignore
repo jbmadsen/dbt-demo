@@ -17,3 +17,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 .ipynb_checkpoints
+
+# Airflow files
+containers/airflow/unittests.cfg
+containers/airflow/airflow-webserver.pid
+containers/airflow/logs/
+containers/airflow/.local/
+containers/airflow/.bash_history
