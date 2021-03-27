@@ -400,6 +400,10 @@ BEGIN TRANSACTION CreateJob;
 {sql_steps_template}
 {sql_job_schedule_template}
 
+EXEC dbo.sp_add_jobserver
+    @job_name = '{job.name}',
+    @server_name = N'(LOCAL)'
+
 END TRY
 BEGIN CATCH
 
