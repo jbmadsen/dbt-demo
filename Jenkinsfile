@@ -3,6 +3,9 @@ Pipeline syntax:
 https://www.jenkins.io/doc/book/pipeline/syntax/ 
 */
 
+/* Pipeline definitions */
+def isTargetPlatformWindows = true 
+
 pipeline {
     /* Any agent information - specifies where the pipeline will run in the Jenkins environment */
     agent any
@@ -86,6 +89,9 @@ pipeline {
         }
         
         stage('Deploy') {
+            when {
+                branch 'master' // or some other branch
+            }
             steps {
                 echo 'Deploying...'
                 /*
@@ -102,11 +108,29 @@ pipeline {
             }
         }
 
-        stage('Apply Agent Jobs') {
+        stage('Scheduling SQL') {
+            when {
+                // Idea from: 
+                // https://stackoverflow.com/questions/57602609/jenkins-pipeline-stage-skip-based-on-groovy-variable-defined-in-pipeline
+                // https://www.jenkins.io/doc/book/pipeline/syntax/#when
+                expression { isTargetPlatformWindows == true }
+            }
             steps {
                 dir("./") {
                     sh "python helpers/apply_schedules.py"
                 }
+            }
+        }
+
+        stage('Scheduling Airflow') {
+            when {
+                // Idea from: 
+                // https://stackoverflow.com/questions/57602609/jenkins-pipeline-stage-skip-based-on-groovy-variable-defined-in-pipeline
+                // https://www.jenkins.io/doc/book/pipeline/syntax/#when
+                expression { isTargetPlatformWindows == false }
+            }
+            steps {
+                echo 'Coming soon...'
             }
         }
     }

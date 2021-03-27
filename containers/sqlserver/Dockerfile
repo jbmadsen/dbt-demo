@@ -2,6 +2,11 @@
 FROM mcr.microsoft.com/mssql/server:2017-CU17-ubuntu
 MAINTAINER jbmadsen "jacob@jbmadsen.com"
 
+USER root
+
+RUN apt-get update \
+  && apt-get install powershell -y
+
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
