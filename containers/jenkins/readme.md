@@ -1,13 +1,19 @@
-# Jenkins README - Notes for setting up pipeline
+# Configuring Jenkins
 
-1) Setup Github project and whether you allow concurrent builds (we dont) \
-<img src="./images/image_example_url_settings.png" alt="Image of example URL settings" style="width:600px;"/>
+## Setting up the Jenkins setup using Configuration-as-code
 
-2) To simulate our internal environment, we setup a polling solution (1 minute for testing!) \
-<img src="./images/image_example_polling.png" alt="Image of example polling" style="width:600px;"/>
+From this nice [DigitalOcean tutorial](https://www.digitalocean.com/community/tutorials/how-to-automate-jenkins-setup-with-docker-and-jenkins-configuration-as-code) by [Daniel Li](https://www.digitalocean.com/community/users/d4nyll)!
+Awesome stuff.
 
-3) To overcome [this Jenkins bug](https://stackoverflow.com/questions/46684972/jenkins-throws-java-lang-illegalargumentexception-invalid-refspec-refs-heads), we disable lightweight checkout AND set branches to */*, and NOT any of: [EMPTY, NULL, *] \
-<img src="./images/image_bugfixing_branch_and_lightweight.png" alt="Image of example URL settings" style="width:600px;"/>
+## Setting up a Jenkins Job using the Job DSL plugin, again all configured in code
 
-4) It runs Build, Test, Deploy according to our [Jenkinsfile](./../../Jenkinsfile)
+From this nice [DigitalOcean tutorial](https://www.digitalocean.com/community/tutorials/how-to-automate-jenkins-job-configuration-using-job-dsl), again by [Daniel Li](https://www.digitalocean.com/community/users/d4nyll)!
+Awesome stuff.
+
+As well as [this backup tutorial](https://github.com/jenkinsci/job-dsl-plugin/wiki/Tutorial---Using-the-Jenkins-Job-DSL), and some [Job DSL documentation](https://jenkinsci.github.io/job-dsl-plugin/).
+
+## Setting up the Pipeline-as-code [Jenkinsfile](./../../Jenkinsfile)
+
+TODO: I need to figure out and remember the sources, decumentation, and tutorials I used there.
+
 

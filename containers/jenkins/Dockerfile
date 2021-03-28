@@ -1,8 +1,22 @@
 FROM jenkins/jenkins:latest
-MAINTAINER jbmadsen "jacob@jbmadsen.com"
 
 USER root
 
+# Disable install wizard
+ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
+# Configuration-as-code config location
+ENV CASC_JENKINS_CONFIG /usr/share/jenkins/ref/casc.yaml
+
+# Copy list of plugins we want into the image
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+
+# Install the plugins
+RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+
+# Copy list of plugins we want into the image
+COPY casc.yaml /usr/share/jenkins/ref/casc.yaml
+
+# Install all other dependencies we are interested in using in our pipelines for ease of use
 RUN apt-get update \
   && apt-get install apt-file -y \
   && apt-file update \
