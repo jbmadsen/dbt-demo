@@ -1,0 +1,10 @@
+# sql server
+sqlserver/volumes/*
+# jenkins
+jenkins/data/*
+# airflow
+airflow/unittests.cfg
+airflow/airflow-webserver.pid
+airflow/logs/
+airflow/.local/
+airflow/.bash_history
