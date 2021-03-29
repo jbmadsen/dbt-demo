@@ -1,6 +1,6 @@
 ## To run: docker-compose run -d
 
-version: "3"
+version: "2"
 
 services:
 
@@ -8,6 +8,6 @@ services:
     container_name: sql-server-db
     build: .
     volumes:
-      - ~/git/dbt-demo/containers/sqlserver/volumes:/var/opt/mssql/data
+      - ./volumes:/var/opt/mssql/data
     ports:
       - "1433:1433"

@@ -5,7 +5,7 @@
 # docker-compose up -d keeps it running
 # I can access bash using: docker exec -i -t ubuntu-ext bash
 
-version: "3"
+version: "2"
 
 
 services:
