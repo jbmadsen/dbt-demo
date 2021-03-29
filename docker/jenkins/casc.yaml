@@ -25,3 +25,6 @@ security:
 unclassified:
   location:
     url: http://127.0.0.1:8080/
+
+jobs:
+  - file: ./jobs/dbt_jenkins_job.groovy
