@@ -10,6 +10,8 @@ And [this one](https://github.com/jenkinsci/job-dsl-plugin/wiki/JCasC) for addin
 
 Aaand, lets not forget [this annoying bug!](https://stackoverflow.com/questions/46684972/jenkins-throws-java-lang-illegalargumentexception-invalid-refspec-refs-heads).
 
+Last link: https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/README.md
+
 
 ## Setting up a Jenkins Job using the Job DSL plugin, again all configured in code
 
