@@ -1,0 +1,6 @@
+# parsing schedules.yml to create necessary orchestration/scheduling
+pyyaml
+# connecting to SQL Server
+pyodbc
+# interfacing with Jenkins directly, without involving GUI
+python-jenkins
