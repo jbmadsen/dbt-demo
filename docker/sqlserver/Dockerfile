@@ -1,32 +1,77 @@
-# We choose exact tag (not 'latest'), to be sure that new version wont break creating image
-FROM mcr.microsoft.com/mssql/server:2017-CU17-ubuntu
-MAINTAINER jbmadsen "jacob@jbmadsen.com"
+# Maintainers: Microsoft Corporation 
+FROM ubuntu:18.04
 
 USER root
 
-RUN apt-get update \
-  && apt-get install powershell -y
-
 # Create app directory
 RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
 
 # Copy initialization scripts
-COPY . /usr/src/app
+COPY ./sql /usr/src/app/sql
+# Copy initialization files
+COPY ./run-initialization.sh /usr/src/app/run-initialization.sh
+# copy in supervisord conf file
+COPY ./supervisord.conf /usr/local/etc/supervisord.conf
 
-# Grant permissions for the run-initialization script to be executable
-RUN chmod +x /usr/src/app/run-initialization.sh
+# install supporting packages
+RUN apt-get update && \
+    apt-get install -y apt-transport-https \
+                       curl \
+                       supervisor \
+                       fakechroot \
+                       locales \
+                       iptables \
+                       sudo \
+                       wget \
+                       curl \
+                       zip \
+                       unzip \
+                       make \ 
+                       bzip2 \ 
+                       m4 \
+                       apt-transport-https \
+                       tzdata \
+                       libnuma-dev \
+                       libsss-nss-idmap-dev \
+                       pkg-config \
+                       software-properties-common
 
-# Set environment variables, not to have to write them with docker run command
-# Note: make sure that your password matches what is in the run-initialization script 
-ENV SA_PASSWORD Secure1337Password
-ENV ACCEPT_EULA Y
-ENV MSSQL_PID Developer
-ENV MSSQL_AGENT_ENABLED true
+# Adding custom MS repository
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN curl https://packages.microsoft.com/config/ubuntu/18.04/mssql-server-2019.list > /etc/apt/sources.list.d/mssql-server-2019.list
+RUN curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
 
-# Expose port 1433 in case accesing from other container
+# install SQL Server ML services R and Python packages which will also install the mssql-server pacakge, the package for SQL Server itself
+# if you want to install only Python or only R, you can add/remove the package as needed below
+RUN apt-get update && \
+    apt-get install -y mssql-mlservices-packages-r \
+                       mssql-mlservices-packages-py \
+                       && \
+    # Cleanup the Dockerfile
+    apt-get clean && \
+    rm -rf /var/apt/cache/* /tmp/* /var/tmp/* /var/lib/apt/lists
+
+# install SQL Server drivers and tools
+RUN apt-get update && \
+    ACCEPT_EULA=Y apt-get install -y unixodbc-dev mssql-tools
+RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+RUN /bin/bash -c "source ~/.bashrc"
+
+# run checkinstallextensibility.sh
+RUN /opt/mssql/bin/checkinstallextensibility.sh && \
+    # set/fix directory permissions and create default directories
+    chown -R root:root /usr/src/app/run-initialization.sh && \
+    chown -R root:root /opt/mssql/bin/launchpadd && \
+    chown -R root:root /opt/mssql/bin/setnetbr && \
+    mkdir -p /var/opt/mssql-extensibility/data && \
+    mkdir -p /var/opt/mssql-extensibility/log && \
+    chown -R root:root /var/opt/mssql-extensibility && \
+    chmod -R 777 /var/opt/mssql-extensibility && \
+    # locale-gen
+    locale-gen en_US.UTF-8
+
+# expose SQL Server port
 EXPOSE 1433
 
-# Run Microsoft SQl Server and initialization script (at the same time)
-# Note: If you want to start MsSQL only (without initialization script) you can comment bellow line out, CMD entry from base image will be taken
-CMD /bin/bash ./entrypoint.sh
+# start services with supervisord
+CMD /usr/bin/supervisord -n -c /usr/local/etc/supervisord.conf

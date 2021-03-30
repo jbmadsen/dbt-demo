@@ -4,10 +4,17 @@ version: "2"
 
 services:
 
-  sql-server-db:
-    container_name: sql-server-db
+  sql-server:
+    container_name: sql-server
     build: .
     volumes:
       - ./volumes:/var/opt/mssql/data
     ports:
       - "1433:1433"
+    environment:
+      MSSQL_SA_PASSWORD: "Secure1337Password"
+      ACCEPT_EULA: "Y"
+      ACCEPT_EULA_ML: "Y"
+      MSSQL_PID: "Developer"
+      MSSQL_AGENT_ENABLED: "true"
+      PATH_TO_MSSQL: "/home/mssql/"

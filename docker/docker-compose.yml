@@ -9,14 +9,14 @@ version: "2"
 
 
 services:
-  sql-server-db:
-    container_name: sql-server-db-ext
+  sql-server:
+    container_name: sql-server-ext
     networks:
       dbt-network:
         ipv4_address: 172.23.0.2
     extends:
       file: ./sqlserver/docker-compose.yml
-      service: sql-server-db
+      service: sql-server
 
   ubuntu:
     container_name: ubuntu-ext
