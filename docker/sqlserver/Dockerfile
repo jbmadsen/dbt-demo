@@ -33,7 +33,6 @@ RUN apt-get update && \
                        tzdata \
                        libnuma-dev \
                        libsss-nss-idmap-dev \
-                       pkg-config \
                        software-properties-common
 
 # Adding custom MS repository
@@ -56,6 +55,17 @@ RUN apt-get update && \
     ACCEPT_EULA=Y apt-get install -y unixodbc-dev mssql-tools
 RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 RUN /bin/bash -c "source ~/.bashrc"
+
+# install other missing functionality
+RUN apt-get update \
+    && apt-get install git -y \
+    && apt-get install -y python3-pip python3-dev \
+    && cd /usr/local/bin \
+    && ln -s /usr/bin/python3 python \
+    && pip3 --no-cache-dir install --upgrade pip \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install dbt \
+    && pip install dbt-sqlserver
 
 # run checkinstallextensibility.sh
 RUN /opt/mssql/bin/checkinstallextensibility.sh && \
