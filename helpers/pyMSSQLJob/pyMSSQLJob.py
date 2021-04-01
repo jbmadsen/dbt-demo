@@ -128,11 +128,18 @@ class JobStep:
         self.command = command
         if self.command.startswith('dbt'):
             self.command = f"""
-import os
+EXECUTE sp_execute_external_script 
+    @language = N'Python',
+    @script = N'
+        import os
 
-os.chdir("/usr/src/app/git/dbt-demo/src/")
+        os.chdir("/usr/src/app/git/dbt-demo/src/")
 
-os.system("{self.command} --profiles-dir ./../../profiles --target prod")
+        os.system("{self.command} --profiles-dir ./../../profiles --target prod")
+        
+        OutputDataSet = InputDataSet', 
+    @input_data_1 = N'select 1'
+    GO
             """
         self.error = error
 
