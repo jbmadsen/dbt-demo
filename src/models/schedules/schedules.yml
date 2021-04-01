@@ -2,7 +2,7 @@
 version: 2
 
 schedules:
-  - name: every_five_minute
+  - name: works
     description: "Every five minutes testing if this works"
     schedule: #"*/5 * * * *"
         frequency_type: "Daily" 
@@ -17,13 +17,13 @@ schedules:
         active_end_time: null
     steps:
       - name: compile
-        command: dbt compile --model +demo_model+
+        command: dbt compile
       - name: snapshot
-        command: dbt snapshot --model +demo_model+
+        command: dbt snapshot
       - name: test
-        command: dbt test --model +demo_model+
+        command: dbt test
 
-  - name: every_minute
+  - name: doesnt_work
     description: "testing if I can parse this for some reason, every minute"
     schedule: #"* * * * *" # CRON style every minute
         frequency_type: "Weekly" 
