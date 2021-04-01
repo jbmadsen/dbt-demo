@@ -175,8 +175,9 @@ class Job:
         # Assign model name, description, and schedule
         name = model['name']
         description = model['description']
-        # Schedule is not required
-        if model['schedule']:
+        # Schedule not required
+        schedule = None
+        if "schedule" in model.keys():
             schedule = JobSchedule(name, model['schedule'])
             # Check for Schedule errors or fail fast
             error = schedule.error
@@ -185,10 +186,10 @@ class Job:
         # Assign model steps
         steps = [JobStep.fromDictionary(step) for step in model['steps']]
         # Check for JobSteps errors or fail fast
-        error = schedule.error
+        error = next(filter(lambda step: step.error is not None, steps), None)
         if error is not None: 
             return Job(name, description, None, None, error)
-        # Creat and return error-free objects
+        # Create and return error-free objects
         return Job(name, description, schedule, steps, error)
 
     @classmethod
@@ -197,8 +198,6 @@ class Job:
             return "Error: Schedule has no name"
         elif 'description' not in model.keys():
             return f"Error: Schedule '{model['name']}' has no description"
-        elif 'schedule' not in model.keys():
-            return f"Error: Schedule '{model['name']}' has no schedule"
         elif 'steps' not in model.keys():
             return f"Error: Schedule '{model['name']}' has no steps"
         else:
@@ -270,7 +269,7 @@ EXEC sp_add_jobstep
     @job_name = '{job_name}',  
     @step_name = '{step.name}',  
     @subsystem = N'TSQL',  
-    @command = 'EXEC xp_cmdshell ''{step.command}''',   
+    @command = '{step.command.replace("'", "''")}',     
     @on_success_action = {stop_or_go},
     @retry_attempts = 3,
     @retry_interval = 3
@@ -358,7 +357,7 @@ END
 
         sql_create_job_template = self.create_job_sql(job.name, job.description)
         sql_steps_template = self.jobsteps_to_sql(job.name, job.steps)
-        sql_job_schedule_template = self.job_schedule_to_sql(job.name, job.schedule.name, job.schedule)
+        sql_job_schedule_template = self.job_schedule_to_sql(job.name, job.schedule.name, job.schedule) if job.schedule is not None else ""
 
         sql_final_job_template = f"""
 USE Common;
