@@ -175,11 +175,13 @@ class Job:
         # Assign model name, description, and schedule
         name = model['name']
         description = model['description']
-        schedule = JobSchedule(name, model['schedule'])
-        # Check for Schedule errors or fail fast
-        error = schedule.error
-        if error is not None: 
-            return Job(name, description, None, None, error)
+        # Schedule is not required
+        if model['schedule']:
+            schedule = JobSchedule(name, model['schedule'])
+            # Check for Schedule errors or fail fast
+            error = schedule.error
+            if error is not None: 
+                return Job(name, description, None, None, error)
         # Assign model steps
         steps = [JobStep.fromDictionary(step) for step in model['steps']]
         # Check for JobSteps errors or fail fast
