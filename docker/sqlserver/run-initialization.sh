@@ -29,5 +29,9 @@ echo "Seeding databases"
 # Applying additional configuration
 /opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i /usr/src/app/sql/config/config.sql
 
+# Setup Git-interfacing Agent Job
+/opt/mssql-tools/bin/sqlcmd -S $host -U $user -P $pass -d $db -i /usr/src/app/sql/agent_jobs/git_agent_job.sql
+
 # Done
+
 

@@ -77,6 +77,9 @@ RUN /opt/mssql/bin/checkinstallextensibility.sh && \
     mkdir -p /var/opt/mssql-extensibility/log && \
     chown -R root:root /var/opt/mssql-extensibility && \
     chmod -R 777 /var/opt/mssql-extensibility && \
+    mkdir -p /usr/src/app/git && \
+    chown -R root:root /usr/src/app/git && \
+    chmod -R 777 /usr/src/app/git && \
     # locale-gen
     locale-gen en_US.UTF-8
 
