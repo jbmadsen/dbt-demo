@@ -126,6 +126,14 @@ class JobStep:
     def __init__(self, name, command, error):
         self.name = name
         self.command = command
+        if self.command.startswith('dbt'):
+            self.command = f"""
+import os
+
+os.chdir("/usr/src/app/git/dbt-demo/src/")
+
+os.system("{self.command} --profiles-dir ./../../profiles --target prod")
+            """
         self.error = error
 
     @classmethod
