@@ -88,26 +88,6 @@ pipeline {
             }
         }
         
-        stage('Deploy') {
-            when {
-                branch 'master' // or some other branch
-            }
-            steps {
-                echo 'Deploying...'
-                /*
-                TODO:
-                1) Deploy to prod
-                2) Generate docs
-                3) Export docs somewhere?
-                4) Look into manifest.json and the other compiled items
-                    4.1) From there, determine list of jobs schedule to be created
-                         Inspiration: 
-                            https://www.astronomer.io/blog/airflow-dbt-1 
-                            https://www.astronomer.io/blog/airflow-dbt-2
-                */
-            }
-        }
-
         stage('Scheduling SQL') {
             when {
                 // Idea from: 
@@ -118,6 +98,7 @@ pipeline {
             steps {
                 dir("./") {
                     sh "python helpers/apply_schedules.py"
+                    sh "python helpers/execute_git_sync.py"
                 }
             }
         }
