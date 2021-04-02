@@ -34,7 +34,7 @@ sqlserver_demo:
       pass: Secure1337Password
       port: 1433
       database: Staging
-      schema: dbo
+      schema: prod
       threads: 4
 
 
