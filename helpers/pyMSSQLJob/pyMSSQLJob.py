@@ -134,20 +134,20 @@ class JobStep:
 EXECUTE sp_execute_external_script 
     @language = N'Python',
     @script = N'
-        import os
-        
-        import subprocess
+import os
 
-        os.chdir("/usr/src/app/git/dbt-demo/src/")
+import subprocess
 
-        process = subprocess.Popen({result_command}, stdout=subprocess.PIPE)
-        output, error = process.communicate(timeout=60)
-        if output is not None:
-            output = output.decode("utf-8")
-        if error is not None:
-            error = error.decode("utf-8")
-        
-        OutputDataSet = InputDataSet', 
+os.chdir("/usr/src/app/git/dbt-demo/src/")
+
+process = subprocess.Popen({result_command}, stdout=subprocess.PIPE)
+output, error = process.communicate(timeout=60)
+if output is not None:
+    output = output.decode("utf-8")
+if error is not None:
+    error = error.decode("utf-8")
+
+OutputDataSet = InputDataSet', 
     @input_data_1 = N'select 1'
     GO
             """
