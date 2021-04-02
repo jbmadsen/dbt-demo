@@ -129,6 +129,7 @@ class JobStep:
         if self.command.startswith('dbt'):
             split_command = command.split()
             split_command.extend(["--profiles-dir", "./../profiles", "--target", "prod"])
+            result_command = str(split_command).replace("\'", "\"")
             self.command = f"""
 EXECUTE sp_execute_external_script 
     @language = N'Python',
@@ -139,7 +140,7 @@ EXECUTE sp_execute_external_script
 
         os.chdir("/usr/src/app/git/dbt-demo/src/")
 
-        process = subprocess.Popen({str(split_command).replace("\'", "\"")}, stdout=subprocess.PIPE)
+        process = subprocess.Popen({result_command}, stdout=subprocess.PIPE)
         output, error = process.communicate(timeout=60)
         if output is not None:
             output = output.decode("utf-8")
