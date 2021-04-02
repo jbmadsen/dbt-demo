@@ -19,7 +19,7 @@ data-paths: ["data"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 docs-paths: ["docs"]
-#log-path: ["logs"] # Not working apparently?
+log-path: "logs" # ["logs"] not working apparently? Why is this different?
 
 
 target-path: "target"  # directory which will store compiled SQL files
@@ -78,9 +78,9 @@ models:
       +enabled: true
       materialized: view
       +schema: |
-        {%- if  target.name == "dev" -%} dev
+        {%- if target.name == "dev" -%} dev
         {%- elif target.name == "uat"  -%} uat
-        {%- elif target.name == "prod"  -%} dbo
+        {%- elif target.name == "prod"  -%} prod
         {%- else -%} err
         {%- endif -%}
     # This configures models found in models/common/
