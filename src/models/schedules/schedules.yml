@@ -20,6 +20,8 @@ schedules:
         command: dbt compile
       - name: snapshot
         command: dbt snapshot
+      - name: run
+        command: dbt run
       - name: test
         command: dbt test
 
