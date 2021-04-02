@@ -128,6 +128,7 @@ class JobStep:
         self.command = command
         if self.command.startswith('dbt'):
             split_command = command.split()
+            split_command = split_command.replace("\'", "\"")
             split_command.extend(["--profiles-dir", "./../profiles", "--target", "prod"])
             self.command = f"""
 EXECUTE sp_execute_external_script 
