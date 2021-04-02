@@ -30,8 +30,8 @@ sqlserver_demo:
       type: sqlserver
       driver: 'ODBC Driver 17 for SQL Server'
       host: 172.23.0.2
-      user: not_sa
-      pass: super_secret_password
+      user: sa
+      pass: Secure1337Password
       port: 1433
       database: Staging
       schema: dbo
