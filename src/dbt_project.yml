@@ -19,6 +19,7 @@ data-paths: ["data"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 docs-paths: ["docs"]
+log-path: ["logs"]
 
 
 target-path: "target"  # directory which will store compiled SQL files

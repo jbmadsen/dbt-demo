@@ -26,7 +26,7 @@ schedules:
           
           git_url = "https://github.com/jbmadsen/dbt-demo.git"
           
-          git_folder = "dbt-demo"
+          git_folder = "dbt-demo/"
           
           remote_branch = "origin/master"
 
@@ -83,6 +83,9 @@ schedules:
               print(f"Setting working directory for working with Git: {os.getcwd()}")
               response = git_clone_or_update(git_url, git_folder)
               if response:
+                  os.chdir(target_dir + git_folder + "src")
+                  terminal_command(["dbt", "clean"])
+                  terminal_command(["dbt", "deps", "--profiles-dir", "./../profiles"])
                   print(f"Final response: {response}")
 
           run()
