@@ -19,7 +19,7 @@ data-paths: ["data"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 docs-paths: ["docs"]
-log-path: "logs" # ["logs"] not working apparently? Why is this different?
+log-path: "logs" # ["logs"] not working
 
 
 target-path: "target"  # directory which will store compiled SQL files
@@ -52,6 +52,9 @@ on-run-start:
         INNER JOIN sys.schemas s ON (t.schema_id = s.schema_id) 
         WHERE s.name = '{{ target.schema }}' and t.name = 'audit_dbt_runs') 
       CREATE TABLE {{ target.schema }}.audit_dbt_runs (model VARCHAR(100), state VARCHAR(10), time DATETIME)"
+
+on-run-end:
+  - "{{ log_results(results) }}"
 
 
 # Configuring models
