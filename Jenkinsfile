@@ -35,13 +35,6 @@ pipeline {
                         sh 'echo "--------------- Test ---------------"'
                     }
                 }
-
-                // stage('Checkout') {
-                //     steps {
-                //         git branch: 'master',
-                //             url: 'https://github.com/jbmadsen/dbt-demo'
-                //     }
-                // }
             }
         }
 
