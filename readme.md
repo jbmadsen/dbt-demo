@@ -39,6 +39,10 @@ Connection:
   Connection test: OK connection ok
 ```
 
+## Stack visualized
+
+![dbt-demo-stack](./assets/dbt-demo-stack.png)
+
 
 ## Tools needed
 
