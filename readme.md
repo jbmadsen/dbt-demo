@@ -1,6 +1,19 @@
 # dbt Demo project in Docker containers
 
-Todo for running project:
+
+## Things you might need to do before running
+
+* If you have forked this project, you will want to search and replace all instances of **github.com/jbmadsen/dbt-demo** with whatever you forked it to.
+  * This should happen in the following places:
+    * [docker/jenkins/jobs/dbt_jenkins_job.groovy](./docker/jenkins/jobs/dbt_jenkins_job.groovy)
+    * [docker/sqlserver/sql/helper_scripts/init_update_git.sql](./docker/sqlserver/sql/helper_scripts/init_update_git.sql)
+    * [src/models/schedules/git_sync_schedule.yml](./src/models/schedules/git_sync_schedule.yml)
+* I usually have my git repositories cloned to **~/git/**. You might have to change this if you have cloned the repository to somewhere different
+  * This should happen in the following place:
+    * [docker/ubuntu/docker-compose.yml](./docker/ubuntu/docker-compose.yml)
+
+
+## Run and test (and hopefully it will work!)
 
 Starting docker containers:
 > docker-compose -f containers/docker-compose.yml up -d
@@ -27,11 +40,11 @@ Connection:
 ```
 
 
-# Tools used
+## Tools needed
 
 * Docker
 * Docker Compose
 * Git
-* Visual Studio Code
-* Windows Terminal
+* A Text Editor
+* A Terminal
 
