@@ -20,7 +20,7 @@ Starting docker containers:
 
 Testing everything works:
 
-> docker exec -it ubuntu bash-ext \
+> docker exec -it ubuntu-ext bash \
 > #: cd dbt-demo/src \
 > #: dbt debug --profiles-dir /home/git/dbt-demo/profiles
 
