@@ -44,6 +44,9 @@ Connection:
   Connection test: OK connection ok
 ```
 
+You can have a look at what is happending in the docker-compose [here](./docker/readme.md). 
+
+
 ## Workflow visualized
 
 ![dbt-demo-stack](./assets/dbt-demo-stack.png)
