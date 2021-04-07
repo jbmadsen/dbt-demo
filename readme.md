@@ -44,7 +44,7 @@ Connection:
   Connection test: OK connection ok
 ```
 
-## Stack visualized
+## Workflow visualized
 
 ![dbt-demo-stack](./assets/dbt-demo-stack.png)
 
