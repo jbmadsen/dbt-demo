@@ -1,5 +1,10 @@
 # dbt Demo project in Docker containers
 
+While there are dozens of articles and github repositories on the internet on how to use shiny new tech stacks - unfortunately not all of us are privileged enough to be able to use this - often due to a variety of issues, from management, legal, regulatory, budget, contract issues, etc.
+For this demo is for those of us facing the hurdles of having to host everything ourselves, on-prem. So no Fivetran and no Snowflake. No AWS/Azure, no dbt Cloud - none of that fancy new shiny tech. Oh, and no Github Actions or Gitlab Pipelines for that hazzle-free CI/CD.
+
+And, in reality, for a production environment, I would even be hosting this on an on-prem private Git repository.
+
 
 ## Things you might need to do before running
 
