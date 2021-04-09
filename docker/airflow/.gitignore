@@ -1,0 +1,6 @@
+# airflow
+unittests.cfg
+airflow-webserver.pid
+logs/
+.local/
+.bash_history
