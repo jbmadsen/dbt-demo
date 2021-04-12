@@ -40,9 +40,9 @@ schedules:
         active_end_time: 160000
     steps:
       - name: compile
-        command: dbt compile --model +currency_model_manual+
+        command: dbt compile --model +orders_staging_to_common+
       - name: run
-        command: dbt run --model +currency_model_manual+
+        command: dbt run --model +orders_staging_to_common+
       - name: test
-        command: dbt test --model +currency_model_manual+
+        command: dbt test --model +orders_staging_to_common+
 
