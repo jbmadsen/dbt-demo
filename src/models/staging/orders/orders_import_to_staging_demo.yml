@@ -3,7 +3,9 @@ version: 2
 
 models:
   - name: orders_import_to_staging_demo
-    description: "Transform data from Import db to Staging db"
+    description: >
+      # Transform data from Import db to Staging db
+      This should be multiline
     columns:
       - name: orders_id
         description: "The primary key for this table"
